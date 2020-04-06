@@ -98,7 +98,10 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repository: https://github.com/zjt-wy/zjt-wy.github.io.git
+  branch: master
+ 
 
 search:
   path: search.xml
