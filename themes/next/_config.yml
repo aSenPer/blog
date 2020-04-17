@@ -525,7 +525,7 @@ mediumzoom: false
 
 # Vanilla JavaScript plugin for lazyloading images.
 # For more information: https://github.com/ApoorvSaxena/lozad.js
-lazyload: true
+lazyload: false
 
 # Pangu Support
 # For more information: https://github.com/vinta/pangu.js
@@ -610,7 +610,7 @@ changyan:
 # Valine
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
-  enable: true
+  enable: false
   appid: Ao8PCQqEzcHG6k54bnapDx47-gzGzoHsz # Your leancloud application appid
   appkey: KKS9DTjSEG6TChnH12zsQiyw # Your leancloud application appkey
   notify: false # Mail notifier
@@ -689,11 +689,11 @@ cnzz_siteid:
 # AppID and AppKey are recommended to be the same as valine's for counter compatibility.
 # Do not enable both `valine.visitor` and `leancloud_visitors`.
 leancloud_visitors:
-  enable: false
+  enable: true
   app_id: Ao8PCQqEzcHG6k54bnapDx47-gzGzoHsz # <your app id>
   app_key: KKS9DTjSEG6TChnH12zsQiyw # <your app key>
   # Required for apps from CN region
-  server_url: http://47.104.6.142/ # <your server url>
+  # server_url: http://47.104.6.142/ # <your server url>
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.

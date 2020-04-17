@@ -6,7 +6,6 @@
       var query = new AV.Query(Counter);
       var entries = [];
       var $visitors = $(".leancloud_visitors");
-
       $visitors.each(function () {
         entries.push( $(this).attr("id").trim() );
       });

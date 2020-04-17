@@ -56,7 +56,7 @@
   {%- if theme.pjax %}
     </div>
   {%- endif %}
-  {% include '_third-party/analytics/lean-analytics.swig' %}
+
   <div class="kwy-content">
   <div class="kwy-container">
     <svg id="bongo-cat" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 787.3 433.8">
@@ -185,5 +185,6 @@
     </svg>
   </div>
 </div>
+  {% include '_third-party/analytics/lean-analytics.swig' %}
 </body>
 </html>

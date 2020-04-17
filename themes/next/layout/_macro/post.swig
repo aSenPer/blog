@@ -130,7 +130,7 @@
           {{- next_inject('postMeta') }}
 
           {%- if config.symbols_count_time.symbols %}
-          {%- if theme.symbols_count_time.separated_meta %}{%- endif %}
+          {%- if theme.symbols_count_time.separated_meta %}</br>{%- endif %}
             <span class="post-meta-item" title="{{ __('symbols_count_time.count') }}">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
