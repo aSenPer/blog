@@ -180,6 +180,7 @@ social:
   GitHub: https://github.com/zjt-wy || fab fa-github
   E-Mail: mailto:18369656127@163.com || fa fa-envelope
   Weibo: https://weibo.com/zjt94920 || fab fa-weibo
+  博客园: https://www.cnblogs.com/zjt-blogs/ || fas fa-blog
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
@@ -261,13 +262,13 @@ tag_icon: true
 # Front-matter variable (unsupport animation).
 reward_settings:
   # If true, reward will be displayed in every article by default.
-  enable: false
+  enable: true
   animation: true
-  #comment: Donate comment here.
+  comment: 感谢您嘞支持.
 
 reward:
-  #wechatpay: /images/wechatpay.png
-  #alipay: /images/alipay.png
+  wechatpay: https://raw.githubusercontent.com/zjt-wy/images/master/wechatpay.jpg
+  alipay: https://raw.githubusercontent.com/zjt-wy/images/master/alipay.jpg
   #paypal: /images/paypal.png
   #bitcoin: /images/bitcoin.png
 
@@ -276,7 +277,7 @@ reward:
 follow_me:
   #Twitter: https://twitter.com/username || fab fa-twitter
   #Telegram: https://t.me/channel_name || fab fa-telegram
-  #WeChat: /images/wechat_channel.jpg || fab fa-weixin
+  # WeChat: /images/wechat_channel.jpg || fab fa-weixin
   # RSS: /atom.xml || fa fa-rss
 
 # Related popular posts
@@ -301,7 +302,7 @@ post_edit:
 
 # Show previous post and next post in post footer if exists
 # Available values: left | right | false
-post_navigation: left
+post_navigation: right
 
 
 # ---------------------------------------------------------------
@@ -357,11 +358,11 @@ codeblock:
   highlight_theme: night
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: ture
     # Show text copy result.
-    show_result: false
+    show_result: true
     # Available values: default | flat | mac
-    style:
+    style: mac
 
 back2top:
   enable: true
@@ -380,7 +381,7 @@ reading_progress:
 
 # Bookmark Support
 bookmark:
-  enable: true
+  enable: false
   # Customize the color of the bookmark.
   color: "#222"
   # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
@@ -389,7 +390,7 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
+  enable: true
   permalink: https://github.com/zjt-wy
   title: Follow me on GitHub
 
@@ -540,8 +541,8 @@ quicklink:
 
   # Home page and archive page can be controlled through home and archive options below.
   # This configuration item is independent of `enable`.
-  home: false
-  archive: false
+  home: true
+  archive: true
 
   # Default (true) will initialize quicklink after the load event fires.
   delay: true
@@ -581,7 +582,7 @@ comments:
 
 # Disqus
 disqus:
-  enable: false
+  enable: true
   shortname:
   count: true
   #post_meta_order: 0
@@ -602,7 +603,7 @@ disqusjs:
 
 # Changyan
 changyan:
-  enable: false
+  enable: true
   appid:
   appkey:
   #post_meta_order: 0
@@ -610,17 +611,17 @@ changyan:
 # Valine
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
-  enable: false
+  enable: true
   appid: Ao8PCQqEzcHG6k54bnapDx47-gzGzoHsz # Your leancloud application appid
   appkey: KKS9DTjSEG6TChnH12zsQiyw # Your leancloud application appkey
   notify: false # Mail notifier
   verify: false # Verification code
-  placeholder: 来啦 老弟 # Comment box placeholder
+  placeholder: 来聊聊呗 # Comment box placeholder
   avatar: retro # Gravatar style
-  guest_info: nick,link # Custom comment header
+  guest_info: nick,link,mail # Custom comment header
   pageSize: 10 # Pagination size
   language: zh-cn
-  visitor: true # Article reading statistic
+  visitor: false # Article reading statistic
   comment_count: true # If false, comment count will only be displayed in post page, not in home page
   recordIP: false # Whether to record the commenter IP
   serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
@@ -797,7 +798,7 @@ note:
 # Tabs tag
 tabs:
   transition:
-    tabs: false
+    tabs: true
     labels: true
 
 # PDF tag
@@ -867,8 +868,8 @@ canvas_ribbon:
   alpha: 0.6 # The transparency of the ribbon
   zIndex: -1 # The display level of the ribbon
 
-canvas_nest: true 
-use_motion: true  # 开启动画效果
+canvas_nest: false 
+use_motion: false  # 开启动画效果
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING SETTINGS
 #! UNLESS YOU KNOW WHAT YOU ARE DOING
@@ -998,4 +999,4 @@ js: js
 images: images
 
 # JiaThis 分享服务
-jiathis: true
+jiathis: false
