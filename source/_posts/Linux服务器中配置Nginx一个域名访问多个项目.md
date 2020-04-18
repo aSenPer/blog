@@ -2,7 +2,7 @@
 title: Linux服务器中配置Nginx一个域名访问多个项目
 date: 2020-04-12 13:33:33
 tags: Nginx
-
+categories: Nginx
 ---
 
 &emsp;&emsp;务器配置个人博客和其它项目使其能够根据不同 url 跳转到不同项目，(例如:*localhosh://A 项目/，localhosh://B 项目/* )因为对服务器和 Nginx 部署了解甚少，在此记录一下

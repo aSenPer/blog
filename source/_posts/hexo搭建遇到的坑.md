@@ -2,6 +2,7 @@
 title: hexo搭建
 date: 2020-04-12 14:43:37
 tags: Nginx
+categories: Nginx
 ---
 
 

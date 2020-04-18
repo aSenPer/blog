@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: ZJT的博客
-subtitle: '今天比昨天好，就是希望。'
-description: '我也曾有过一双翅膀，不过我没用它在天上翱翔，而是放在锅里炖汤……'
+title: ZJT
+subtitle: 'GO GO GO'
+description: '当你感到悲哀痛苦时，是因为 你太菜 。——名人ZJT'
 keywords: 'web前端 JS Nodejs Vue React UI框架'
 author: ZJT
 language: zh-CN
@@ -13,7 +13,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://zjt-wy.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -108,3 +108,10 @@ search:
   field: post
   format: html
   limit: 10000
+# hexo-tag-cloud 标签云 | see https://github.com/MikeCoder/hexo-tag-cloud
+tag_cloud:
+  textFont: Trebuchet MS, Helvetica # 字体
+  textColor: '#555' # 字体颜色
+  textHeight: 25 # 字体高度
+  outlineColor: '#E2E1D1' # 字体背景色
+  maxSpeed: 0.1 # 标签云最大移动速度
