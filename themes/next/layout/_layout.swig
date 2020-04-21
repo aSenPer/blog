@@ -185,6 +185,5 @@
     </svg>
   </div>
 </div>
-  {% include '_third-party/analytics/lean-analytics.swig' %}
 </body>
 </html>
