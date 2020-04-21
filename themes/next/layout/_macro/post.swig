@@ -63,7 +63,7 @@
             </span>
           {%- endif %}
 
-          {%- if theme.post_meta.updated_at.enable and datetime_diff %}
+          {#{%- if theme.post_meta.updated_at.enable and datetime_diff %}
             {%- set display_updated = not theme.post_meta.updated_at.another_day or theme.post_meta.updated_at.another_day and date_diff %}
 
             {%- if display_updated or not theme.post_meta.created_at %}
@@ -75,7 +75,7 @@
                 <time title="{{ __('post.modified') + __('symbol.colon') + full_date(post.updated) }}" itemprop="dateModified" datetime="{{ moment(post.updated).format() }}">{{ date(post.updated) }}</time>
               </span>
             {%- endif %}
-          {%- endif %}
+          {%- endif %}#}
 
           {%- if post.categories and post.categories.length and theme.post_meta.categories %}
             <span class="post-meta-item">

@@ -56,3 +56,37 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-size: 16px;
   font-weight:normal;
 }
+/*修改滚动条样式*/
+body::-webkit-scrollbar{
+  width:10px;
+  height:10px;
+  /**/
+}
+body::-webkit-scrollbar-track{
+  background: #EAFAFF;
+  border-radius:2px;
+}
+body::-webkit-scrollbar-thumb{
+  background: #179a16;
+  border-radius:10px;
+}
+body::-webkit-scrollbar-thumb:hover{
+  background: #333;
+}
+body::-webkit-scrollbar-corner{
+  background: #179a16;
+}
+.content-wrap{
+  background: none;
+  }
+.post-block{
+  background-color: $content-bg-color
+  padding: 20px 30px
+  margin-bottom 20px
+  
+  border-radius: 15px
+  &:nth-child(1){
+    margin-top -50px}
+  }
+.post-eof{
+  margin 15px auto 0}
