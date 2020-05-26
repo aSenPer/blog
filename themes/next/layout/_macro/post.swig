@@ -129,7 +129,7 @@
 
           {{- next_inject('postMeta') }}
 
-          {%- if config.symbols_count_time.symbols %}
+          {%- if theme.symbols_count_time.symbols %}
           {%- if theme.symbols_count_time.separated_meta %}</br>{%- endif %}
             <span class="post-meta-item" title="{{ __('symbols_count_time.count') }}">
               <span class="post-meta-item-icon">
@@ -142,7 +142,7 @@
             </span>
           {%- endif %}
 
-          {%- if config.symbols_count_time.time %}
+          {%- if theme.symbols_count_time.time %}
             <span class="post-meta-item" title="{{ __('symbols_count_time.time') }}">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>

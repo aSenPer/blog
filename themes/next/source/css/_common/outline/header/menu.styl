@@ -19,7 +19,18 @@
       display: none;
     }
   }
-
+  a{
+    &::after{
+      position:absolute;
+      // margin 0 auto;
+    content: ' ';
+    display block;
+    width 0%;
+    height 2px;
+    background: #000;
+    transition: all 0.4s;
+      }
+  }
   a, span.exturl {
     border-bottom: 0;
     display: block;
@@ -55,8 +66,17 @@
   }
 }
 
-.menu-item-active a {
-  background: var(--menu-item-bg-color);
+.menu-item-active a{
+  &::after{
+    position:absolute;
+    content: ' ';
+    display block;
+    width 80%;
+    height 2px;
+    background: #000;
+    }
+  
+  // background: var(--menu-item-bg-color);
 }
 
 .use-motion .menu-item {

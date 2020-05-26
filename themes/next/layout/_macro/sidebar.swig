@@ -44,17 +44,25 @@
         </div>
       {%- endif %}
       {% if site.tags.length > 1 %}
-      <script type="text/javascript" charset="utf-8" src="{{ url_for('/js/tagcloud.js') }}"></script>
-      <script type="text/javascript" charset="utf-8" src="{{ url_for('/js/tagcanvas.js') }}"></script>
       <div class="widget-wrap">
           <div id="myCanvasContainer" class="widget tagcloud">
-          <canvas width="220" height="250" id="resCanvas" style="width=100%">
-              {{ list_tags() }}
-          </canvas>
+            {{ tagcloud({
+                min_font   : theme.tagcloud.min,
+                max_font   : theme.tagcloud.max,
+                amount     : theme.tagcloud.amount,
+                color      : true,
+                start_color: theme.tagcloud.start,
+                end_color  : theme.tagcloud.end})
+              }}
           </div>
       </div>
       {% endif %}
     </div>
   </aside>
   <div id="sidebar-dimmer"></div>
+  <script>
+  // var a = JSON.parse({{ site.tags[0] }}) 
+  // console.log(a)
+  // for (let i = 0 ; i < {{site.tags.length}}; )
+  </script>
 {% endmacro %}

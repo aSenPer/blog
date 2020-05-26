@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: ZJT
-subtitle: 'GO GO GO'
-description: '当你感到悲哀痛苦时，是因为 你太菜 '
+title: aSenPer's Blog
+subtitle: aSenPer's Blog
+description: 勤能补拙是良训，一分辛劳一分才。 ——华罗庚 
 keywords: 'web前端 JS Nodejs Vue React UI框架'
-author: ZJT
+author: aSenPer
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://zjt-wy.github.io
+url: https://asenper.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -99,7 +99,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/zjt-wy/zjt-wy.github.io.git
+  repository: https://github.com/asenper/asenper.github.io.git
   branch: master
  
 
@@ -109,9 +109,9 @@ search:
   format: html
   limit: 10000
 # hexo-tag-cloud 标签云 | see https://github.com/MikeCoder/hexo-tag-cloud
-tag_cloud:
-  textFont: Trebuchet MS, Helvetica # 字体
-  textColor: '#555' # 字体颜色
-  textHeight: 25 # 字体高度
-  outlineColor: '#E2E1D1' # 字体背景色
-  maxSpeed: 0.1 # 标签云最大移动速度
+# tag_cloud:
+#   textFont: Trebuchet MS, Helvetica # 字体
+#   textColor: '#555' # 字体颜色
+#   textHeight: 25 # 字体高度
+#   outlineColor: '#E2E1D1' # 字体背景色
+#   maxSpeed: 0.1 # 标签云最大移动速度

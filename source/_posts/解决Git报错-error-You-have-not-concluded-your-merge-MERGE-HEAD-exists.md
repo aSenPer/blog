@@ -2,6 +2,7 @@
 title: '解决Git报错:error: You have not concluded your merge (MERGE_HEAD exists)'
 date: 2020-05-18 11:16:07
 tags: Git
+categories: Git
 ---
 Git fetch和git pull的区别:
 都可以从远程获取最新版本到本地
