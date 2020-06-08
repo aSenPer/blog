@@ -6,6 +6,12 @@
   border-bottom: 1px solid #aaa;
 }
 
+.post-gallery {
+  margin-top: 10px;
+  &:hover{
+    cursor pointer}
+}
+
 .main {
   padding-top: 10px;
 }
@@ -207,7 +213,6 @@ body::-webkit-scrollbar-corner {
   opacity: 1;
 }
 
-
 .tag-cloud-tags a:nth-child(9n) {
   background-color: #4A4A4A;
 }
@@ -260,5 +265,28 @@ body::-webkit-scrollbar-corner {
   opacity: 1;
 }
 
-.search-popup #no-result{
-  color: #59c493}
+.search-popup #no-result {
+  color: #59c493;
+}
+
+.post-block {
+  +mobile() {
+    .post-header {
+      text-align: left;
+      .post-title {
+        text-align: left;
+        text-overflow: -o-ellipsis-lastline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      .post-meta {
+        text-align: left;
+      }
+    }
+  }
+}

@@ -58,6 +58,7 @@
           </div>
           {% include '_scripts/pages/schedule.swig' %}
         {% else %}
+        <h1>sdfdsf</h1>
           {{ page.content }}
         {%- endif %}
       </div>

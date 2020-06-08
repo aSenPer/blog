@@ -166,12 +166,13 @@
     {### POST BODY ###}
     {#################}
     <div class="post-body{%- if post.direction and post.direction.toLowerCase() === 'rtl' %} rtl{%- endif %}" itemprop="articleBody">
-
       {# Gallery support #}
       {%- if post.photos and post.photos.length %}
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+        <div class="post-gallery" id="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
           {%- for photo in post.photos %}
+          <div data-src="{{ url_for(photo) }}">
             <img src="{{ url_for(photo) }}" itemprop="contentUrl">
+          </div>
           {%- endfor %}
         </div>
       {%- endif %}
@@ -200,7 +201,7 @@
           {%- endif %}
           <!--/noindex-->
         {% else %}
-          {{ post.content }}
+         {###  {{ post.content }} ###}
         {%- endif %}
       {% else %}
         {{ post.content }}
@@ -257,3 +258,4 @@
   {######################}
   {### END POST BLOCK ###}
   {######################}
+
