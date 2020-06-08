@@ -45,6 +45,7 @@
       {%- endif %}
       {% if site.tags.length > 1 %}
       <div class="widget-wrap">
+        <h4>标签云</h4>
           <div id="myCanvasContainer" class="widget tagcloud">
             {{ tagcloud({
                 min_font   : theme.tagcloud.min,

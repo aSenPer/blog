@@ -99,7 +99,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/asenper/asenper.github.io.git
+  repository: https://github.com/asenper/asenper.github.io
   branch: master
  
 
@@ -115,3 +115,4 @@ search:
 #   textHeight: 25 # 字体高度
 #   outlineColor: '#E2E1D1' # 字体背景色
 #   maxSpeed: 0.1 # 标签云最大移动速度
+

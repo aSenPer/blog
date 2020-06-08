@@ -1,14 +1,14 @@
 ---
 title: '解决Git报错:error: You have not concluded your merge (MERGE_HEAD exists)'
-date: 2020-05-18 11:16:07
+date: 2019-05-18 11:16:07
 tags: Git
 categories: Git
 ---
 Git fetch和git pull的区别:
+<!-- more  -->
 都可以从远程获取最新版本到本地
 1.Git fetch:只是从远程获取最新版本到本地,不会merge(合并)
 $:git fetch origin master   //从远程的origin的master主分支上获取最新版本到origin/master分支上
-<!-- more   -->
 $:git log -p master..origin/master //比较本地的master分支和origin/master分支的区别
 $:git merge origin/master          //合并
 

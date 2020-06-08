@@ -1,6 +1,6 @@
 ---
 title: 解决cannot remove '.user.ini'Operation not permitted
-date: 2020-04-18 10:29:25
+date: 2019-04-18 10:29:25
 tags: Linux
 categories: Linux
 ---

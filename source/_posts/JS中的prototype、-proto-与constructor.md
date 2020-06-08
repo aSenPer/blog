@@ -1,6 +1,6 @@
 ---
 title: JS中的prototype、__proto__与constructor
-date: 2020-04-18 13:31:24
+date: 2019-09-08 13:31:24
 tags: JS
 categories : JS
 ---
@@ -8,8 +8,9 @@ categories : JS
 ​	原文链接 https://blog.csdn.net/cc18868876837/article/details/81211729
 
 ### 1.前言
-作为一名前端工程师，必须搞懂JS中的prototype、_ _ proto_ _ 与constructor属性，相信很多初学者对这些属性存在许多困惑，容易把它们混淆，本文旨在帮助大家理清它们之间的关系并彻底搞懂它们。这里说明一点，_ _ proto_ _ 属性的两边是各由两个下划线构成（这里为了方便大家看清，在两下划线之间加入了一个空格：_ _proto_ _，读作“dunder proto”，“double underscore proto”的缩写），实际上，该属性在ES标准定义中的名字应该是[[Prototype]]，具体实现是由浏览器代理自己实现，谷歌浏览器的实现就是将[[Prototype]]命名为_ _ proto_ _ ，大家清楚这个标准定义与具体实现的区别即可（名字有所差异，功能是一样的），可以通过该方式检测引擎是否支持这个属性：Object.getPrototypeOf({_ _ proto_ _ : null}) === null。本文基于谷歌浏览器（版本 72.0.3626.121）的实验结果所得。
 <!-- more -->
+
+作为一名前端工程师，必须搞懂JS中的prototype、_ _ proto_ _ 与constructor属性，相信很多初学者对这些属性存在许多困惑，容易把它们混淆，本文旨在帮助大家理清它们之间的关系并彻底搞懂它们。这里说明一点，_ _ proto_ _ 属性的两边是各由两个下划线构成（这里为了方便大家看清，在两下划线之间加入了一个空格：_ _proto_ _，读作“dunder proto”，“double underscore proto”的缩写），实际上，该属性在ES标准定义中的名字应该是[[Prototype]]，具体实现是由浏览器代理自己实现，谷歌浏览器的实现就是将[[Prototype]]命名为_ _ proto_ _ ，大家清楚这个标准定义与具体实现的区别即可（名字有所差异，功能是一样的），可以通过该方式检测引擎是否支持这个属性：Object.getPrototypeOf({_ _ proto_ _ : null}) === null。本文基于谷歌浏览器（版本 72.0.3626.121）的实验结果所得。
      现在正式开始！ 让我们从如下一个简单的例子展开讨论，并配以相关的图帮助理解：
 
 ```js

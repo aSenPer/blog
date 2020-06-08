@@ -1,6 +1,6 @@
 ---
 title: Linux服务器中配置Nginx一个域名访问多个项目
-date: 2020-04-12 13:33:33
+date: 2019-10-12 13:33:33
 tags: Nginx
 categories: Nginx
 ---

@@ -59,9 +59,9 @@ footer:
     # Icon name in Font Awesome. See: https://fontawesome.com/icons
     name: fa fa-user
     # If you want to animate the icon, set it to true.
-    animated: true
+    animated: false
     # Change the color of icon, using Hex Code.
-    color: "#aaa"
+    color: "#59c493"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
   copyright:
@@ -87,7 +87,7 @@ footer:
 # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
 creative_commons:
   license: by-nc-sa
-  sidebar: true
+  sidebar: false
   post: true
   language: zh-CN
 
@@ -120,8 +120,8 @@ menu:
   tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
-  '收藏': /collection/ || fa fa-atlas
-  about: /about/ || fa fa-user
+  收藏: /collection/ || fa fa-atlas
+  about: /about/ || fa fa-user fa-fw
   # sitemap: /sitemap.xml || fa fa-sitemap
   # commonweal: /404/ || fa fa-heartbeat
 
@@ -151,7 +151,7 @@ sidebar:
   #  - always  expand for all pages automatically.
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  totally remove sidebar including sidebar toggle.
-  display: hide
+  display: always
 
   # Sidebar padding in pixels.
   padding: 18
@@ -180,7 +180,7 @@ social:
   GitHub: https://github.com/asenper || fab fa-github
   E-Mail: mailto:18369656127@163.com || fa fa-envelope
   Weibo: https://weibo.com/zjt94920 || fab fa-weibo
-  博客园: https://www.cnblogs.com/zjt-blogs/ || fas fa-blog
+  博客园: https://www.cnblogs.com/asenper/ || fas fa-blog
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
@@ -380,7 +380,7 @@ reading_progress:
   enable: true
   # Available values: top | bottom
   position: top
-  color: "#37c6c0"
+  color: "#59c493"
   height: 3px
 
 # Bookmark Support
@@ -394,7 +394,7 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: true
+  enable: false
   permalink: https://github.com/asenper
   title: Follow me on GitHub
 

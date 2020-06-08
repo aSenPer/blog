@@ -8,6 +8,7 @@
       {%- if path == '[object Object]' %}
         {# Main Menu (default menu item for Submenu) #}
         {%- for subname, subpath in path %}
+        {{ subpath }}
           {%- set itemName = subname | lower %}
           {%- set respath = subpath %}
           {%- if itemName == 'default' %}
