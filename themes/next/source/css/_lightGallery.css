@@ -115,6 +115,7 @@
 	line-height: 1px;
 	text-align: center;
 	width: 100%;
+	background-size: 125px;
 }
 #lightGallery-slider.slide .lightGallery-slide {
 	position: absolute;
@@ -257,7 +258,7 @@
 	bottom: 20px;
 	position: absolute;
 	left: 50%;
-	margin-left: -55px;
+	margin-left: -72px;
 	z-index: 9;
 	-webkit-backface-visibility: hidden;
 }
@@ -274,13 +275,13 @@
 	display: inline-block !important;
 	display: inline-block;
 	vertical-align: middle;
- *display: inline;
- *zoom: 1;
+	*display: inline;
+	*zoom: 1;
 	background-color: #000;
 	background-color: rgba(0, 0, 0, 0.65);
 	font-size: 16px;
-	width: 28px;
-	height: 28px;
+	width: 45px;
+	height: 32px;
 	font-family: 'Slide-icons';
 	color: #FFF;
 	cursor: pointer;
@@ -297,8 +298,8 @@
 	background-color: rgba(0, 0, 0, 0.85);
 }
 #lightGallery-action a#lightGallery-prev:before, #lightGallery-action a#lightGallery-next:after {
-	left: 5px;
-	bottom: 3px;
+	left: 14px;
+	bottom: 0px;
 	position: absolute;
 }
 #lightGallery-action a#lightGallery-prev:before {
@@ -310,8 +311,8 @@
 #lightGallery-action a.cLthumb:after {
 	font-family: 'Slide-icons';
 	content: "\e01c";
-	left: 6px;
-	bottom: 4px;
+	left: 14px;
+	bottom: 0px;
 	font-size: 16px;
 	position: absolute;
 }
@@ -366,11 +367,11 @@
 	color: #FFFFFF;
 	display: block;
 	float: right !important;
-	width: 28px;
+	width: 32px;
 	position: relative;
-	height: 28px;
+	height: 32px;
 	border-radius: 2px;
-	margin-top: -4px;
+	margin-top: 0px;
 	background-color: #000;
 	background-color: rgba(0, 0, 0, 0.65);
 	-webkit-transition: background-color 0.3s ease 0s;
@@ -382,9 +383,9 @@
 	cursor: pointer;
 }
 #lightGallery-Gallery .thumb_cont .thumb_info .close i:after {
-	left: 6px;
+	left: 8px;
 	position: absolute;
-	top: 4px;
+	top: 0px;
 }
 #lightGallery-Gallery .thumb_cont .thumb_info .close i:after, #lightGallery-close:after {
 	content: "\e01a";
@@ -407,7 +408,7 @@
   *zoom: 1;
 	margin-bottom: 4px;
 	margin-left: 4px;
-	height: 50px;
+	/* height: 50px; */
 	width: 50px;
 	opacity: 0.6;
 	filter: alpha(opacity=60);
@@ -424,7 +425,7 @@
 @media (min-width: 800px) {
 #lightGallery-Gallery .thumb_cont .thumb {
 	width: 94px;
-	height: 94px;
+	/* height: 94px; */
 }
 }
 #lightGallery-Gallery .thumb_cont .thumb > img {

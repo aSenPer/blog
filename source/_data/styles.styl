@@ -152,6 +152,9 @@ body::-webkit-scrollbar {
 
 .content-wrap {
   background: none;
+  +mobile() {
+    padding: 0 5px;
+  }
 }
 
 .post-block {
@@ -438,3 +441,10 @@ body::-webkit-scrollbar {
     text-align: center;
   }
 }
+.post-gallery {
+  grid-template-columns: repeat(auto-fill, 190px);
+//  background: url(/images/loading.gif) no-repeat;
+//   background-size: 70px 70px;
+//   background-position: 70px 45px;
+
+  }
