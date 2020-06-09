@@ -1,3 +1,9 @@
+/*
+ * @Date: 2020-04-05 19:43:28
+ * @LastEditors: ZJT
+ * @LastEditTime: 2020-06-09 12:05:16
+ * @FilePath: \blog\themes\next\scripts\helpers\engine.js
+ */ 
 /* global hexo */
 
 'use strict';
@@ -36,12 +42,12 @@ hexo.extend.helper.register('post_nav', function(post) {
   const prev = theme.post_navigation === 'right' ? post.prev : post.next;
   const next = theme.post_navigation === 'right' ? post.next : post.prev;
   const left = prev ? `
-    <a href="${this.url_for(prev.path)}" rel="prev" title="${prev.title}">
-      <i class="fa fa-chevron-left"></i> ${prev.title}
+    <a href="${this.url_for(prev.path)}" rel="prev" class="prev" title="${prev.title}">
+      <span> 上一篇：${prev.title} </span>
     </a>` : '';
   const right = next ? `
-    <a href="${this.url_for(next.path)}" rel="next" title="${next.title}">
-      ${next.title} <i class="fa fa-chevron-right"></i>
+    <a href="${this.url_for(next.path)}" rel="next" class="next" title="${next.title}">
+      <span> 下一篇：${next.title} </span>
     </a>` : '';
   return `
     <div class="post-nav">

@@ -58,7 +58,6 @@
               {% else %}
                 {%- set create_title = __('post.created') + __('symbol.colon') + full_date(post.date) %}
               {%- endif %}
-
               <time title="{{ create_title }}" itemprop="dateCreated datePublished" datetime="{{ moment(post.date).format() }}">{{ date(post.date) }}</time>
             </span>
           {%- endif %}

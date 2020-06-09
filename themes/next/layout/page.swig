@@ -1,4 +1,5 @@
 {% extends '_layout.swig' %}
+{% import '_macro/post-collapse.swig' as post_template with context %}
 {% import '_macro/sidebar.swig' as sidebar_template with context %}
 
 {% block title %}
@@ -57,8 +58,13 @@
           <div class="event-list">
           </div>
           {% include '_scripts/pages/schedule.swig' %}
+        {% elif page.type === 'gallery' %}
+          <div class="">
+            <div class="posts-collapse">
+            {{ post_template.render(site.posts,'gallery') }}
+            </div>
+          </div>
         {% else %}
-        <h1>sdfdsf</h1>
           {{ page.content }}
         {%- endif %}
       </div>
