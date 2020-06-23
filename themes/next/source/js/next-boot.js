@@ -82,6 +82,7 @@ NexT.boot.refresh = function() {
   CONFIG.fancybox && NexT.utils.wrapImageWithFancyBox();
   CONFIG.mediumzoom && window.mediumZoom('.post-body :not(a) > img, .post-body > img');
   CONFIG.lazyload && window.lozad('.post-body img').observe();
+
   CONFIG.pangu && window.pangu.spacingPage();
 
   CONFIG.exturl && NexT.utils.registerExtURL();
@@ -111,4 +112,25 @@ window.addEventListener('DOMContentLoaded', () => {
   NexT.boot.registerEvents();
   NexT.boot.refresh();
   NexT.boot.motion();
+});
+setTimeout(function(){
+  $(".post-photos").css('visibility','visible')
+  $('.post-photos').masonry({
+    itemSelector: '.photos',
+    columnWidth: '.photos',
+    gutter: '.photos-gutter'
+  });
+},1500)
+var imgs = $(".post-gallery p img")
+var html = ''
+imgs.each(function(v,i){
+  var src = $(i).data("src") || $(i).attr("src");
+  html+= '<div data-src='+src+'> <a href="">'+$(i)[0].outerHTML+'</a> </div>'
+})
+$(".post-gallery p").html(html)
+lightGallery($(".post-gallery p")[0], {
+  thumbnail: true,
+  getCaptionFromTitleOrAlt: true,
+  pause: 3500,
+  subHtmlSelectorRelative: false
 });

@@ -164,18 +164,9 @@
     {#################}
     {### POST BODY ###}
     {#################}
-    <div class="post-body{%- if post.direction and post.direction.toLowerCase() === 'rtl' %} rtl{%- endif %}" itemprop="articleBody">
-      {# Gallery support #}
-      {%- if post.photos and post.photos.length %}
-        <div class="post-gallery" id="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          {%- for photo in post.photos %}
-          <div data-src="{{ url_for(photo) }}">
-            <img src="{{ url_for(photo) }}" itemprop="contentUrl">
-          </div>
-          {%- endfor %}
-        </div>
-      {%- endif %}
-
+    <div class="post-body{%- if post.direction and post.direction.toLowerCase() === 'rtl' %} rtl{%- endif %}{%- if post.type === 'gallery'%} post-gallery{%- endif %}" itemprop="articleBody">
+       
+      
       {%- if is_index %}
         {%- if post.description and theme.excerpt_description %}
           <p>{{ post.description }}</p>

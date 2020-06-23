@@ -138,6 +138,7 @@ NexT.utils = {
     var THRESHOLD = 50;
     var backToTop = document.querySelector('.back-to-top');
     var readingProgressBar = document.querySelector('.reading-progress-bar');
+    var p=0,t=0;  
     // For init back to top in sidebar if page was scrolled after page refresh.
     window.addEventListener('scroll', () => {
       if (backToTop || readingProgressBar) {
@@ -145,6 +146,15 @@ NexT.utils = {
         var winHeight = window.innerHeight;
         var contentVisibilityHeight = docHeight > winHeight ? docHeight - winHeight : document.body.scrollHeight - winHeight;
         var scrollPercent = Math.min(100 * window.scrollY / contentVisibilityHeight, 100);
+        p = $(document).scrollTop();
+        if (t <= p) {
+          $(".header").css({'position':'initial'})
+        } else {
+          $(".header").css({'position':'sticky'})
+        }
+        setTimeout(function() {
+          t = p;
+        }, 0);
         if (backToTop) {
           backToTop.classList.toggle('back-to-top-on', window.scrollY > THRESHOLD);
           backToTop.querySelector('span').innerText = Math.round(scrollPercent) + '%';
@@ -154,7 +164,6 @@ NexT.utils = {
         }
       }
     });
-
     backToTop && backToTop.addEventListener('click', () => {
       window.anime({
         targets  : document.scrollingElement,

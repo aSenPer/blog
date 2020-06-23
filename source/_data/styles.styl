@@ -1,5 +1,12 @@
 .header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  opacity:1;
+  .header-inner{
+    padding: 10px 0
+    }
 }
 
 .post-header {
@@ -16,6 +23,7 @@
 
 .main {
   padding-top: 10px;
+  background: #f4f5f5;
 }
 
 .menu-item a {
@@ -52,13 +60,15 @@
   // -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
   .post-block {
     box-shadow: 0 0 5px rgba(202, 203, 204, 0.5);
+    background: #fff;
   }
 }
 
 .sidebar {
-  box-shadow: 0 3px 3px #008000;
+  box-shadow: 0 3px 3px #aaa;
   overflow: hidden;
   background: #fff;
+  overflow-y: auto
 }
 
 .posts-expand .post-meta {
@@ -152,6 +162,7 @@ body::-webkit-scrollbar {
 
 .content-wrap {
   background: none;
+
   +mobile() {
     padding: 0 5px;
   }
@@ -281,6 +292,14 @@ body::-webkit-scrollbar {
 }
 
 .post-block {
+  // padding-bottom 5px
+  .post-body {
+    img{
+      margin 0
+    }
+    // padding-top 20px
+  }
+
   +mobile() {
     .post-header {
       text-align: left;
@@ -389,18 +408,16 @@ body::-webkit-scrollbar {
 .posts-expand .post-tags a:hover {
   background: #f5f5f5;
 }
+
 // 分页
 .pagination {
   margin: 20px 0 0;
   text-align: center;
-  display: inline-block !important
-  margin: 0 auto
-  border: none
-  .page-number.current{
-    background: #59c493
-    border: none
-  }
-  .page-number{
+  display: inline-block !important;
+  margin: 0 auto;
+  border: none;
+  .space{
+    background: #fff;
     width: 45px;
     height: 40px;
     border: 1px solid #ebebeb;
@@ -413,12 +430,39 @@ body::-webkit-scrollbar {
     text-decoration: none;
     margin: 0 2px;
     border-radius: 6px;
-    &:hover{
-      border-color: #59c459
-      color: #59c459  
+    &:hover {
+      border-color: #59c459;
+      color: #59c459;
     }
   }
+  .page-number.current {
+    background: #59c493;
+    border: none;
+  }
+
+  .page-number {
+    background: #fff
+    width: 45px;
+    height: 40px;
+    border: 1px solid #ebebeb;
+    margin-left: -1px;
+    color: #8a8a8a;
+    display: inline-block;
+    line-height: 40px;
+    float: left;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0 2px;
+    border-radius: 6px;
+
+    &:hover {
+      border-color: #59c459;
+      color: #59c459;
+    }
+  }
+
   .extend {
+    background: #fff;
     width: 45px;
     height: 40px;
     border: 1px solid #ebebeb;
@@ -431,20 +475,117 @@ body::-webkit-scrollbar {
     text-decoration: none;
     margin: 0 2px;
     border-radius: 6px;
-    &:hover{
-      border-color: #59c459
-      color: #59c459  
+
+    &:hover {
+      border-color: #59c459;
+      color: #59c459;
     }
   }
+
   +mobile() {
     margin: 80px 10px 0;
     text-align: center;
   }
 }
-.post-gallery {
-  // grid-template-columns: repeat(auto-fill, 190px);
-//  background: url(/images/loading.gif) no-repeat;
-//   background-size: 70px 70px;
-//   background-position: 70px 45px;
 
+.beian {
+  text-align: center;
+}
+
+.post-photos {
+  padding-top: 10px;
+  visibility hidden;
+  
+  .photos {
+    width: 32.6%;
+    +mobile(){
+      width: 49%
+    }
+
+    .photos-meta {
+      position: relative;
+      img{
+        margin-bottom 6px
+        }
+      .collection-year {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        span {
+          color: #fff;
+          padding: 0 10px;
+          border-bottom-right-radius: 5px;
+        }
+      }
+
+      .photos-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(250, 250, 250, 0.65);
+        display: flex;
+        align-items: center;
+        .post-title{
+          flex: 1
+          text-align: left
+          }
+        .post-title-link{
+          display: block
+          &:hover{
+            color: #333}
+          }
+      }
+    }
   }
+
+  .photos:nth-child(9n).collection-year span {
+    background-color: #4A4A4A;
+  }
+
+  .photos:nth-child(9n+1) .collection-year span {
+    background-color: #428BCA;
+  }
+
+  .photos:nth-child(9n+2) .collection-year span {
+    background-color: #5CB85C;
+  }
+
+  .photos:nth-child(9n+3) .collection-year span {
+    background-color: #D9534F;
+  }
+
+  .photos:nth-child(9n+4) .collection-year span {
+    background-color: #567E95;
+  }
+
+  .photos:nth-child(9n+5) .collection-year span {
+    background-color: #B433FF;
+  }
+
+  .photos:nth-child(9n+6) .collection-year span {
+    background-color: #00ABA9;
+  }
+
+  .photos:nth-child(9n+7) .collection-year span {
+    background-color: #B37333;
+  }
+
+  .photos:nth-child(9n+8) .collection-year span {
+    background-color: #FF6600;
+  }
+
+  .photos-gutter {
+    width: 1%;
+    height: 0;
+  }
+  .photos-width100 {
+    // width: 100%;
+  }
+}
+.medium-zoom-overlay,.medium-zoom-image--opened{
+  z-index 2
+}
+.comments{
+  background: #fff}

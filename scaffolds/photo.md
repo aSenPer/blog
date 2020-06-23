@@ -1,7 +1,7 @@
 ---
 title:  {{ title }}
 date:  {{ date }}
-tags: 那些沿路上的风景
+tags: 
 categories:
 type: gallery
 password: 
