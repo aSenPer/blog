@@ -1,10 +1,24 @@
 ---
 title: 一次弄懂EventLoop
-date: 2020-06-22 11:49:37
+date: 2020-01-02 11:49:37
 tags: JS
 categories: JS
 ---
-原文链接 [https://juejin.im/post/5c3d8956e51d4511dc72c200](https://juejin.im/post/5c3d8956e51d4511dc72c200)
+
+关于EventLoop的文章实在太多了，但是好像至今都没有一篇比较权威的说明，从
+阮一峰老师的
+[**什么是 Event Loop？**](http://www.ruanyifeng.com/blog/2013/10/event_loop.html)——>
+[**JavaScript 运行机制详解：再谈Event Loop**](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+再到朴灵老师的
+[**【朴灵评注】JavaScript 运行机制详解：再谈Event Loop**](https://blog.csdn.net/lin_credible/article/details/40143961) 
+还有MDN的
+[**并发模型与事件循环**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop) 这篇讲的有些太精炼了😣
+
+都是大神咱也不知道咋评价，总之看完以后对一些东西还是很😵
+只能慢慢从工作中积累了🐵
+
+本文是我认为比较容易理解的一篇
+原文链接 [https://github.com/baiyuze/notes/issues/8](https://github.com/baiyuze/notes/issues/8)
 
 ## 前言
 
@@ -104,7 +118,7 @@ JS调用栈采用的是后进先出的规则，当函数执行的时候，会被
 
 ## 举个例子
 
-```
+```js
 console.log('script start');
 
 setTimeout(function() {
@@ -117,63 +131,63 @@ Promise.resolve().then(function() {
   console.log('promise2');
 });
 console.log('script end');
- 
+
 ```
 
 首先我们划分几个分类：
 
 ### 第一次执行
 
-```
+```js
 Tasks：run script、 setTimeout callback
 
 Microtasks：Promise then
 
 JS stack: script
 Log: script start、script end。
- 
+
 ```
 
 执行同步代码，将宏任务（`Tasks`）和微任务(`Microtasks`)划分到各自队列中。
 
 ### 第二次执行
 
-```
+```js
 Tasks：run script、 setTimeout callback
 
 Microtasks：Promise2 then
 
 JS stack: Promise2 callback
 Log: script start、script end、promise1、promise2
- 
+
 ```
 
 执行宏任务后，检测到微任务(`Microtasks`)队列中不为空，执行`Promise1`，执行完成`Promise1`后，调用`Promise2.then`，放入微任务(`Microtasks`)队列中，再执行`Promise2.then`。
 
 ### 第三次执行
 
-```
+```js
 Tasks：setTimeout callback
 
 Microtasks：
 
 JS stack: setTimeout callback
 Log: script start、script end、promise1、promise2、setTimeout
- 
+
 ```
 
 当微任务(`Microtasks`)队列中为空时，执行宏任务（`Tasks`），执行`setTimeout callback`，打印日志。
 
 ### 第四次执行
 
-```
+```js
 Tasks：setTimeout callback
 
 Microtasks：
 
 JS stack:
 Log: script start、script end、promise1、promise2、setTimeout
- 
+
 ```
 
 清空**Tasks**队列和`JS stack`。
@@ -185,7 +199,7 @@ Log: script start、script end、promise1、promise2、setTimeout
 
 ## 再举个例子
 
-```
+```js
 console.log('script start')
 
 async function async1() {
@@ -213,7 +227,7 @@ new Promise(resolve => {
   })
 
 console.log('script end')
- 
+
 ```
 
 这里需要先理解`async/await`。
@@ -241,24 +255,24 @@ console.log('script end')
 
 ### **引用贺老师知乎上的一个例子**
 
-```
+```js
 async function f() {
   await p
   console.log('ok')
 }
- 
+
 ```
 
 简化理解为：
 
-```
+```js
 
 function f() {
   return RESOLVE(p).then(() => {
     console.log('ok')
   })
 }
- 
+
 ```
 
 * 如果 `RESOLVE(p)` 对于 `p` 为 `promise` 直接返回 `p` 的话，那么 `p`的 `then` 方法就会被马上调用，其回调就立即进入 `job` 队列。
@@ -313,7 +327,7 @@ function f() {
 执行`setTimeout`和`setInterval`中到期的`callback`，执行这两者回调需要设置一个毫秒数，理论上来说，应该是时间一到就立即执行callback回调，但是由于`system`的调度可能会延时，达不到预期时间。  
 以下是官网文档解释的例子：
 
-```
+```js
 const fs = require('fs');
 
 function someAsyncOperation(callback) {
@@ -339,7 +353,7 @@ someAsyncOperation(() => {
     // do nothing
   }
 });
- 
+
 ```
 
 当进入事件循环时，它有一个空队列（`fs.readFile()`尚未完成），因此定时器将等待剩余毫秒数，当到达95ms时，`fs.readFile()`完成读取文件并且其完成需要10毫秒的回调被添加到轮询队列并执行。  
@@ -384,7 +398,7 @@ someAsyncOperation(() => {
 通常，当代码被执行时，事件循环最终将达到`poll`阶段，它将等待传入连接，请求等。  
 但是，如果已经调度了回调`setImmediate()`，并且轮询阶段变为空闲，则它将结束并且到达`check`阶段，而不是等待`poll`事件。
 
-```
+```js
 console.log('start')
 setTimeout(() => {
   console.log('timer1')
@@ -402,12 +416,12 @@ Promise.resolve().then(function() {
   console.log('promise3')
 })
 console.log('end')
- 
+
 ```
 
 如果`node`版本为`v11.x`， 其结果与浏览器一致。
 
-```
+```js
 start
 end
 promise3
@@ -416,7 +430,7 @@ promise1
 timer2
 promise2
 
- 
+
 ```
 
 具体详情可以查看《[又被node的eventloop坑了，这次是node的锅](https://juejin.im/post/5c3e8d90f265da614274218a)》。
@@ -425,7 +439,7 @@ promise2
 
 * 如果time2定时器已经在执行队列中了
 
-```
+```js
 start
 end
 promise3
@@ -433,12 +447,12 @@ timer1
 timer2
 promise1
 promise2
- 
+
 ```
 
 * 如果time2定时器没有在执行对列中，执行结果为
 
-```
+```js
 start
 end
 promise3
@@ -446,7 +460,7 @@ timer1
 promise1
 timer2
 promise2
- 
+
 ```
 
 具体情况可以参考`poll`阶段的两种情况。
@@ -464,7 +478,7 @@ promise2
 
 ### 举个例子
 
-```
+```js
 setTimeout(() => {
   console.log('timeout');
 }, 0);
@@ -481,7 +495,7 @@ setImmediate(() => {
 
 **如果在`I / O`周期内移动两个调用，则始终首先执行立即回调：**
 
-```
+```js
 const fs = require('fs');
 
 fs.readFile(__filename, () => {
@@ -492,7 +506,7 @@ fs.readFile(__filename, () => {
     console.log('immediate');
   });
 });
- 
+
 ```
 
 其结果可以确定一定是`immediate => timeout`。  
@@ -500,7 +514,7 @@ fs.readFile(__filename, () => {
 
 然后再进入`timers`阶段，执行`setTimeout`，打印`timeout`。
 
-```
+```js
    ┌───────────────────────────┐
 ┌─>│           timers          │
 │  └─────────────┬─────────────┘
@@ -519,7 +533,7 @@ fs.readFile(__filename, () => {
 │  ┌─────────────┴─────────────┐
 └──┤      close callbacks      │
    └───────────────────────────┘
- 
+
 ```
 
 ## Process.nextTick()
@@ -534,7 +548,7 @@ fs.readFile(__filename, () => {
 
 ### 例子
 
-```
+```js
 let bar;
 
 setTimeout(() => {
@@ -553,25 +567,25 @@ someAsyncApiCall(() => {
 });
 
 bar = 1;
- 
+
 ```
 
 在NodeV10中上述代码执行可能有两种答案，一种为：
 
-```
+```js
 bar 1
 setTimeout
 setImmediate
- 
+
 ```
 
 另一种为：
 
-```
+```js
 bar 1
 setImmediate
 setTimeout
- 
+
 ```
 
 无论哪种，始终都是先执行`process.nextTick(callback)`，打印`bar 1`。

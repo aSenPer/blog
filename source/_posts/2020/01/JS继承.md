@@ -1,6 +1,6 @@
 ---
 title: JS继承
-date: 2020-06-28 23:59:35
+date: 2020-01-15 23:59:35
 tags: JS
 categories: 每天一个知识点
 ---
