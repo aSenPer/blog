@@ -1,5 +1,5 @@
 ---
-title: 补课vue
+title: vue补课
 date: 2020-06-28 15:40:40
 tags: Vue
 categories: Vue
@@ -202,4 +202,68 @@ require.context函数执行后返回的是**一个函数,并且这个函数有3�
    
 ```
 
-   
+##    .sync修饰符实现props的双向绑定
+
+一个简单的小demo [官方文档](https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6)
+
+```html
+<div id="app">
+    <costum-show :isshow.sync="show"></costum-show>
+    <div class="show" v-show="show"></div>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+  <script>
+    Vue.component('costum-show', {
+      props: ['isshow'],
+      template: `
+     <div>
+          <input type="text" val="" @click="showHandle">
+     </div>
+`,
+      methods: {
+        showHandle() {
+          this.$emit("update:isshow", !this.isshow);
+        }
+      },
+      mounted() {
+        console.log(this.isShow);
+      },
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        show: true
+      }
+    })
+  </script>
+```
+
+> 注意带有 `.sync` 修饰符的 `v-bind` **不能**和表达式一起使用 (例如 `v-bind:title.sync=”doc.title + ‘!’”` 是无效的)。取而代之的是，你只能提供你想要绑定的 property 名，类似 `v-model`。
+>
+> 将 `v-bind.sync` 用在一个字面量的对象上，例如 `v-bind.sync=”{ title: doc.title }”`，是无法正常工作的，因为在解析一个像这样的复杂表达式的时候，有很多边缘情况需要考虑。
+
+## provide&inject ----依赖注入
+
+`Vue`相关的面试经常会被面试官问道，`Vue`父子之间传值的方式有哪些，通常我们会回答，`props`传值，`$emit`事件传值，`vuex`传值，还有`eventbus`传值等等，今天再加一种`provide`与`inject`传值 [官方文档](https://cn.vuejs.org/v2/guide/components-edge-cases.html#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5)
+
+`provide` 选项允许我们指定我们想要**提供**给后代组件的数据/方法。
+
+```js
+//祖先组件
+provide: function () {
+  return {
+    getMap: this.getMap
+  }
+}
+```
+
+然后在任何后代组件里，我们都可以使用 `inject` 选项来接收指定的我们想要添加在这个实例上的 property：
+
+```js
+inject: ['getMap']
+```
+
+注意点:
+
+- `provide` 和 `inject` 绑定并不是可响应的。
+- `provide` 和 `inject` 主要在开发高阶插件/组件库时使用。并不推荐用于普通应用程序代码中。

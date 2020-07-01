@@ -61,9 +61,4 @@
     </div>
   </aside>
   <div id="sidebar-dimmer"></div>
-  <script>
-  // var a = JSON.parse({{ site.tags[0] }}) 
-  // console.log(a)
-  // for (let i = 0 ; i < {{site.tags.length}}; )
-  </script>
 {% endmacro %}

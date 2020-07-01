@@ -46,6 +46,11 @@ NexT.boot.registerEvents = function() {
           currentTarget.classList.remove(activePanelClassName);
           target.style.opacity = 0;
           target.classList.add(activePanelClassName);
+          if($('.site-overview-wrap').hasClass('sidebar-panel-active')){
+            $(".widget-wrap").show()
+          }else{
+            $(".widget-wrap").hide()
+          }
           window.anime({
             targets : target,
             duration: TAB_ANIMATE_DURATION,
@@ -59,6 +64,7 @@ NexT.boot.registerEvents = function() {
         element.classList.remove(activeTabClassName);
       });
       item.classList.add(activeTabClassName);
+      
     });
   });
 
@@ -71,6 +77,7 @@ NexT.boot.registerEvents = function() {
       target && target.click();
     }
   });
+ 
 };
 
 NexT.boot.refresh = function() {

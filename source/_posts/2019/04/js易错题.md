@@ -1,11 +1,12 @@
 ---
-title: 
+title: JS面试题
 date: 2019-04-10 10:29:25
 tags: Webpack
 categories: Webpack
 
 ---
 ## 普通函数和箭头函数的区别
+
 * 箭头函数不能作构造函数。
 * 箭头函数没有argument参数。如果你想访问箭头函数的直接参数，可以使用剩余参数 ...args，剩余参数 ... args 接受箭头函数的执行参数
 * 箭头函数没有自己的This.指向，箭头函数内部的 this 值始终等于外部函数的 this值。换句话说，箭头函数可按词法解析 this，箭头函数没有定义自己的执行上下文。
@@ -73,4 +74,31 @@ function(b){
 
 很明显 最后返回 1+4 结果为 5
 ```
+
+## 扩展运算符
+
+```js
+let yd = {x:1,y:2}
+//以下代码会不会报错
+let yd1 = { //不会
+  ...yd,
+  get x(){
+    throw new Error()
+  }
+}
+let yd2 = { //会
+  ...yd,
+  ...{
+    get x(){
+      throw new Error()
+    }
+  }
+}
+```
+
+扩展运算符的参数对象之中，如果有取值函数`get`，这个函数是会执行的。
+
+[对象的扩展运算符](https://es6.ruanyifeng.com/#docs/object#%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6)
+
+[数组的扩展运算符](https://es6.ruanyifeng.com/#docs/array#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6)
 
