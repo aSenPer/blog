@@ -1,5 +1,11 @@
 ---
- title: 相册
- date: 2014-12-22 12:39:04
- type: "gallery"
+
+layout: photos
+title: 
+date: 2019-07-14 21:46:24
+tags: 
+categories: 
+type: gallery
+photos: ?imageView2/2/w/200
+# link: http://www.baidu.com
 ---

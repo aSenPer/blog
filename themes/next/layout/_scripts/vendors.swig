@@ -41,11 +41,11 @@
   <script size="{{ theme.canvas_ribbon.size }}" alpha="{{ theme.canvas_ribbon.alpha }}" zIndex="{{ theme.canvas_ribbon.zIndex }}" src="{{ canvas_ribbon_uri }}"></script>
 {%- endif %}
 {{- js('https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js') }}
-{{- next_js('masonry.pkgd.min.js') }}
 {{- next_js('lightGallery.min.js') }}
 {{- next_js('lg-autoplay.min.js') }}
 {{- next_js('lg-zoom.js') }}
 {{- next_js('lg-thumbnail.js') }}
+{{- next_js('jquery.justifiedGallery.min.js')}}
 
 {%- for name, internal in js_vendors %}
   {%- set internal_script = next_vendors(internal) %}

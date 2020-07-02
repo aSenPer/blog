@@ -69,7 +69,7 @@ var Affix = {
 NexT.utils.getAffixParam = function() {
   const sidebarOffset = CONFIG.sidebar.offset || 12;
 
-  let headerOffset = document.querySelector('.header-inner').offsetHeight;
+  let headerOffset = document.querySelector('').offsetHeight;
   let footerOffset = document.querySelector('.footer').offsetHeight;
 
   document.querySelector('.sidebar').style.marginTop = headerOffset + sidebarOffset + 'px';

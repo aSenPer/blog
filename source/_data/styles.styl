@@ -3,10 +3,11 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  opacity:1;
-  .header-inner{
-    padding: 10px 0
-    }
+  opacity: 1;
+
+  .header-inner {
+    padding: 10px 0;
+  }
 }
 
 .post-header {
@@ -68,11 +69,11 @@
   box-shadow: 0 3px 3px #aaa;
   overflow: hidden;
   background: #fff;
-  overflow-y: auto
+  overflow-y: auto;
 }
 
 .posts-expand .post-meta {
-  color: #333;
+  color: #606c76;
 }
 
 .v .vwrap .vheader .vinput {
@@ -98,6 +99,10 @@
   color: #000;
   font-size: 16px !important;
   font-weight: bold;
+}
+
+.v .vcards {
+  padding: 0 20px;
 }
 
 ::selection {
@@ -294,10 +299,9 @@ body::-webkit-scrollbar {
 .post-block {
   // padding-bottom 5px
   .post-body {
-    img{
-      margin 0
+    img {
+      margin: 0;
     }
-    // padding-top 20px
   }
 
   +mobile() {
@@ -416,7 +420,8 @@ body::-webkit-scrollbar {
   display: inline-block !important;
   margin: 0 auto;
   border: none;
-  .space{
+
+  .space {
     background: #fff;
     width: 45px;
     height: 40px;
@@ -430,18 +435,20 @@ body::-webkit-scrollbar {
     text-decoration: none;
     margin: 0 2px;
     border-radius: 6px;
+
     &:hover {
       border-color: #59c459;
       color: #59c459;
     }
   }
+
   .page-number.current {
     background: #59c493;
     border: none;
   }
 
   .page-number {
-    background: #fff
+    background: #fff;
     width: 45px;
     height: 40px;
     border: 1px solid #ebebeb;
@@ -494,19 +501,39 @@ body::-webkit-scrollbar {
 
 .post-photos {
   padding-top: 10px;
-  visibility hidden;
-  
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+
+  +desktop() {
+    .photos:last-child:nth-child(3n - 1) {
+      margin-right: calc(30%);
+    }
+
+    .photos:last-child:nth-child(3n - 2) {
+      margin-right: calc(70%);
+    }
+  }
+
   .photos {
-    width: 32.6%;
-    +mobile(){
-      width: 49%
+    width: 30%;
+    margin-bottom: 8px;
+
+    +mobile() {
+      width: 100%;
     }
 
     .photos-meta {
       position: relative;
-      img{
-        margin-bottom 6px
-        }
+      padding: 15px;
+      background: #f4f4f4;
+      line-height: 1.5;
+
+      img {
+        margin-bottom: 6px;
+      }
+
       .collection-year {
         position: absolute;
         top: 0;
@@ -527,15 +554,19 @@ body::-webkit-scrollbar {
         background: rgba(250, 250, 250, 0.65);
         display: flex;
         align-items: center;
-        .post-title{
-          flex: 1
-          text-align: left
+
+        .post-title {
+          flex: 1;
+          text-align: left;
+        }
+
+        .post-title-link {
+          display: block;
+
+          &:hover {
+            color: #333;
           }
-        .post-title-link{
-          display: block
-          &:hover{
-            color: #333}
-          }
+        }
       }
     }
   }
@@ -580,12 +611,16 @@ body::-webkit-scrollbar {
     width: 1%;
     height: 0;
   }
+
   .photos-width100 {
     // width: 100%;
   }
 }
-.medium-zoom-overlay,.medium-zoom-image--opened{
-  z-index 2
+
+.medium-zoom-overlay, .medium-zoom-image--opened {
+  z-index: 2;
 }
-.comments{
-  background: #fff}
+
+.comments {
+  background: #fff;
+}

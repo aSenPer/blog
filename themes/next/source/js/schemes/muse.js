@@ -21,7 +21,6 @@ window.addEventListener('DOMContentLoaded', () => {
       this.lines.classList.add('toggle-close');
     }
   };
-
   var sidebarToggleMotion = {
     sidebarEl       : document.querySelector('.sidebar'),
     isSidebarVisible: false,
@@ -34,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.sidebar-toggle').addEventListener('click', this.clickHandler.bind(this));
       document.querySelector('.sidebar-toggle').addEventListener('mouseenter', this.mouseEnterHandler.bind(this));
       document.querySelector('.sidebar-toggle').addEventListener('mouseleave', this.mouseLeaveHandler.bind(this));
-      window.addEventListener('sidebar:show', this.showSidebar.bind(this));
+      !CONFIG.page.isHome ? window.addEventListener('sidebar:show', this.showSidebar.bind(this)): null;
       window.addEventListener('sidebar:hide', this.hideSidebar.bind(this));
     },
     mousedownHandler: function(event) {
@@ -64,29 +63,34 @@ window.addEventListener('DOMContentLoaded', () => {
     },
     showSidebar: function() {
       this.isSidebarVisible = true;
-      this.sidebarEl.classList.add('sidebar-active');
-      if (typeof Velocity === 'function') {
-        Velocity(document.querySelectorAll('.sidebar .motion-element'), isRight ? 'transition.slideRightIn' : 'transition.slideLeftIn', {
-          stagger: 50,
-          drag   : true
-        });
+      if(!$(".post-body").hasClass('post-gallery')){
+        this.sidebarEl.classList.add('sidebar-active');
+          if (typeof Velocity === 'function') {
+            Velocity(document.querySelectorAll('.sidebar .motion-element'), isRight ? 'transition.slideRightIn' : 'transition.slideLeftIn', {
+              stagger: 50,
+              drag   : true
+            });
+          }
+    
+          sidebarToggleLines.close();
+          NexT.utils.isDesktop() && window.anime(Object.assign({
+            targets : document.body,
+            duration: SIDEBAR_DISPLAY_DURATION,
+            easing  : 'linear'
+          }, isRight ? {
+            'padding-right': SIDEBAR_WIDTH
+          } : {
+            'padding-left': SIDEBAR_WIDTH
+          }));
+      }else{
+        // if(CONFIG.page.isHome){
+        //   document.querySelector('.sidebar-toggle').style.display='none'
+        // }
       }
-
-      sidebarToggleLines.close();
-      NexT.utils.isDesktop() && window.anime(Object.assign({
-        targets : document.body,
-        duration: SIDEBAR_DISPLAY_DURATION,
-        easing  : 'linear'
-      }, isRight ? {
-        'padding-right': SIDEBAR_WIDTH
-      } : {
-        'padding-left': SIDEBAR_WIDTH
-      }));
     },
     hideSidebar: function() {
       this.isSidebarVisible = false;
       this.sidebarEl.classList.remove('sidebar-active');
-
       sidebarToggleLines.init();
       NexT.utils.isDesktop() && window.anime(Object.assign({
         targets : document.body,
@@ -100,7 +104,14 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   };
   sidebarToggleMotion.init();
+  
+  // $(".post-body").hasClass('post-gallery') ? galleryHideSiderbar():null;
+  // function galleryHideSiderbar(){
 
+  //   document.body.style.paddingRight = 0
+  //   sidebarToggleMotion.sidebarEl.classList.remove('sidebar-active');
+  //   console.log(sidebarToggleMotion.sidebarEl.style.paddingRight);
+  // }
   function updateFooterPosition() {
     var footer = document.querySelector('.footer');
     var containerHeight = document.querySelector('.header').offsetHeight + document.querySelector('.main').offsetHeight + footer.offsetHeight;

@@ -175,7 +175,8 @@
                     }
                 }
             } else {
-                thumbImg = thumb;
+                //缩略图
+                thumbImg = thumb.split('?')[0]+"?imageView2/2/w/200";
             }
 
             thumbList += '<div data-vimeo-id="' + vimeoId + '" class="lg-thumb-item" style="width:' + _this.core.s.thumbWidth + 'px; margin-right: ' + _this.core.s.thumbMargin + 'px"><img src="' + thumbImg + '" /></div>';

@@ -46,11 +46,12 @@ NexT.boot.registerEvents = function() {
           currentTarget.classList.remove(activePanelClassName);
           target.style.opacity = 0;
           target.classList.add(activePanelClassName);
-          if($('.site-overview-wrap').hasClass('sidebar-panel-active')){
-            $(".widget-wrap").show()
-          }else{
-            $(".widget-wrap").hide()
-          }
+          // if($('.site-overview-wrap').hasClass('sidebar-panel-active')){
+          //   $(".widget-wrap").show()
+          // }else{
+          //   $(".widget-wrap").hide()
+          // }
+          $('.site-overview-wrap').hasClass('sidebar-panel-active')? $(".widget-wrap").show(): $(".widget-wrap").hide()
           window.anime({
             targets : target,
             duration: TAB_ANIMATE_DURATION,
@@ -88,7 +89,10 @@ NexT.boot.refresh = function() {
    */
   CONFIG.fancybox && NexT.utils.wrapImageWithFancyBox();
   CONFIG.mediumzoom && window.mediumZoom('.post-body :not(a) > img, .post-body > img');
-  CONFIG.lazyload && window.lozad('.post-body img').observe();
+  if(!$(".post-body").hasClass('post-gallery')){
+    CONFIG.lazyload && window.lozad('.post-body img').observe();
+
+  }
 
   CONFIG.pangu && window.pangu.spacingPage();
 
@@ -120,24 +124,24 @@ window.addEventListener('DOMContentLoaded', () => {
   NexT.boot.refresh();
   NexT.boot.motion();
 });
-setTimeout(function(){
-  $(".post-photos").css('visibility','visible')
-  $('.post-photos').masonry({
-    itemSelector: '.photos',
-    columnWidth: '.photos',
-    gutter: '.photos-gutter'
-  });
-},1500)
-var imgs = $(".post-gallery p img")
-var html = ''
+// 图片
+var imgs = $(".post-gallery img")
+imgs.parent().attr("id",'lightGallery')
 imgs.each(function(v,i){
+  $(i).data("src",$(i).data("src")+"?imageslim")
+  $(i).attr("src",$(i).data("src"))
+  $(i).attr("loaded",true)
   var src = $(i).data("src") || $(i).attr("src");
-  html+= '<div data-src='+src+'> <a href="">'+$(i)[0].outerHTML+'</a> </div>'
+  $(this).replaceWith('<div data-src='+src+'> <a href="javascript:;">'+$(i)[0].outerHTML+'</a> </div>')
 })
-$(".post-gallery p").html(html)
-lightGallery($(".post-gallery p")[0], {
+$("#lightGallery br").remove()
+$(".post-gallery p").justifiedGallery({
+  rowHeight: '100%'
+});
+lightGallery(document.querySelector("#lightGallery"), {
   thumbnail: true,
   getCaptionFromTitleOrAlt: true,
   pause: 3500,
   subHtmlSelectorRelative: false
 });
+// 视频

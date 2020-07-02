@@ -117,7 +117,7 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home
-  tags: /tags/ || fa fa-tags
+  # tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
   收藏: /collection/ || fa fa-atlas
@@ -531,7 +531,7 @@ mediumzoom: true
 
 # Vanilla JavaScript plugin for lazyloading images.
 # For more information: https://github.com/ApoorvSaxena/lozad.js
-lazyload: false
+lazyload: ture
 
 # Pangu Support
 # For more information: https://github.com/vinta/pangu.js
