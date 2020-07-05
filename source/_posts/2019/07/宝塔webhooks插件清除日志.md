@@ -1,8 +1,8 @@
 ---
 title: 宝塔webhooks插件清除日志
 date: 2019-07-02 09:02:32
-tags: Hexo
-categories: Hexo
+tags: hexo
+categories: hexo
 ---
 
 &emsp;&emsp;博客提交的多了，webhooks的日志也越来越多，每次都要把滚动条拉到最底，滚动条还特别小，就想着能不能添加一个清除日志的功能。正好在宝塔论坛里看到了这样的一边文章，转载过来，记录一下
@@ -13,6 +13,7 @@ categories: Hexo
 
 修改 获取列表方法
 第78行  直接替换
+
 ```js
  zbody += '<tr>'
        +'<td>'+mlist[i].title+'</td>'
@@ -28,8 +29,8 @@ categories: Hexo
        +'</tr>'
 ```
 
-
 添加清除日志的方法
+
 ```js
 //清除日志
 function ClearLogs(path){
@@ -45,5 +46,6 @@ function ClearLogs(path){
     });
 }
 ```
+
 完工
 ![](https://img2020.cnblogs.com/blog/1524685/202006/1524685-20200630090102486-1644179180.png)

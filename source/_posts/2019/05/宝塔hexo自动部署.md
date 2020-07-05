@@ -1,8 +1,8 @@
 ---
 title: 宝塔webhooks实现hexo自动部署
 date: 2019-05-10 17:37:14
-tags: Hexo
-categories: Hexo
+tags: hexo
+categories: hexo
 ---
 
 ### webhook自动部署

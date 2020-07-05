@@ -2,7 +2,7 @@
 
 NexT.boot = {};
 
-NexT.boot.registerEvents = function() {
+NexT.boot.registerEvents = function () {
 
   NexT.utils.registerScrollPercent();
   NexT.utils.registerCanIUseTag();
@@ -16,7 +16,7 @@ NexT.boot.registerEvents = function() {
     if (typeof Velocity === 'function') {
       Velocity(siteNav, animateAction, {
         duration: 200,
-        complete: function() {
+        complete: function () {
           siteNav.classList.toggle('site-nav-on');
         }
       });
@@ -37,10 +37,10 @@ NexT.boot.registerEvents = function() {
       var target = targets[index];
       var currentTarget = targets[1 - index];
       window.anime({
-        targets : currentTarget,
+        targets: currentTarget,
         duration: TAB_ANIMATE_DURATION,
-        easing  : 'linear',
-        opacity : 0,
+        easing: 'linear',
+        opacity: 0,
         complete: () => {
           // Prevent adding TOC to Overview if Overview was selected when close & open sidebar.
           currentTarget.classList.remove(activePanelClassName);
@@ -51,12 +51,12 @@ NexT.boot.registerEvents = function() {
           // }else{
           //   $(".widget-wrap").hide()
           // }
-          $('.site-overview-wrap').hasClass('sidebar-panel-active')? $(".widget-wrap").show(): $(".widget-wrap").hide()
+          $('.site-overview-wrap').hasClass('sidebar-panel-active') ? $(".widget-wrap").show() : $(".widget-wrap").hide()
           window.anime({
-            targets : target,
+            targets: target,
             duration: TAB_ANIMATE_DURATION,
-            easing  : 'linear',
-            opacity : 1
+            easing: 'linear',
+            opacity: 1
           });
         }
       });
@@ -65,7 +65,7 @@ NexT.boot.registerEvents = function() {
         element.classList.remove(activeTabClassName);
       });
       item.classList.add(activeTabClassName);
-      
+
     });
   });
 
@@ -78,10 +78,10 @@ NexT.boot.registerEvents = function() {
       target && target.click();
     }
   });
- 
+
 };
 
-NexT.boot.refresh = function() {
+NexT.boot.refresh = function () {
 
   /**
    * Register JS handlers by condition option.
@@ -89,7 +89,7 @@ NexT.boot.refresh = function() {
    */
   CONFIG.fancybox && NexT.utils.wrapImageWithFancyBox();
   CONFIG.mediumzoom && window.mediumZoom('.post-body :not(a) > img, .post-body > img');
-  if(!$(".post-body").hasClass('post-gallery')){
+  if (!$(".post-body").hasClass('post-gallery')) {
     CONFIG.lazyload && window.lozad('.post-body img').observe();
 
   }
@@ -106,7 +106,7 @@ NexT.boot.refresh = function() {
   NexT.utils.registerVideoIframe();
 };
 
-NexT.boot.motion = function() {
+NexT.boot.motion = function () {
   // Define Motion Sequence & Bootstrap Motion.
   if (CONFIG.motion.enable) {
     NexT.motion.integrator
@@ -126,13 +126,13 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 // 图片
 var imgs = $(".post-gallery img")
-imgs.parent().attr("id",'lightGallery')
-imgs.each(function(v,i){
-  $(i).data("src",$(i).data("src")+"?imageslim")
-  $(i).attr("src",$(i).data("src"))
-  $(i).attr("loaded",true)
+imgs.parent().attr("id", 'lightGallery')
+imgs.each(function (v, i) {
+  $(i).data("src", $(i).data("src") + "?imageslim")
+  $(i).attr("src", $(i).data("src"))
+  $(i).attr("loaded", true)
   var src = $(i).data("src") || $(i).attr("src");
-  $(this).replaceWith('<div data-src='+src+'> <a href="javascript:;">'+$(i)[0].outerHTML+'</a> </div>')
+  $(this).replaceWith('<div data-src=' + src + '> <a href="javascript:;">' + $(i)[0].outerHTML + '</a> </div>')
 })
 $("#lightGallery br").remove()
 $(".post-gallery p").justifiedGallery({
@@ -145,3 +145,16 @@ lightGallery(document.querySelector("#lightGallery"), {
   subHtmlSelectorRelative: false
 });
 // 视频
+if(DPlayer){
+  var videos = document.querySelectorAll('video')
+  videos.forEach((e, i) => {
+    $(e).replaceWith('<div id="dplayer' + i + '" style="width:100%;height:40%;"></div>')
+    new DPlayer({
+      container: document.getElementById('dplayer'+i),
+      video: {
+        url: $(e).attr('src'),
+      },
+    })
+  })
+}
+

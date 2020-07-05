@@ -46,7 +46,7 @@
 {{- next_js('lg-zoom.js') }}
 {{- next_js('lg-thumbnail.js') }}
 {{- next_js('jquery.justifiedGallery.min.js')}}
-
+<script src="https://cdn.bootcdn.net/ajax/libs/dplayer/1.25.1/DPlayer.min.js"></script>
 {%- for name, internal in js_vendors %}
   {%- set internal_script = next_vendors(internal) %}
   <script src="{{ theme.vendors[name] or internal_script }}"></script>
