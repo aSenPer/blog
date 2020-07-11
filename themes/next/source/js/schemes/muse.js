@@ -26,14 +26,13 @@ window.addEventListener('DOMContentLoaded', () => {
     isSidebarVisible: false,
     init            : function() {
       sidebarToggleLines.init();
-
       window.addEventListener('mousedown', this.mousedownHandler.bind(this));
       window.addEventListener('mouseup', this.mouseupHandler.bind(this));
       document.querySelector('#sidebar-dimmer').addEventListener('click', this.clickHandler.bind(this));
       document.querySelector('.sidebar-toggle').addEventListener('click', this.clickHandler.bind(this));
       document.querySelector('.sidebar-toggle').addEventListener('mouseenter', this.mouseEnterHandler.bind(this));
       document.querySelector('.sidebar-toggle').addEventListener('mouseleave', this.mouseLeaveHandler.bind(this));
-      !CONFIG.page.isHome ? window.addEventListener('sidebar:show', this.showSidebar.bind(this)): null;
+      !CONFIG.page.isHome && !$('.post-body').hasClass('post-gallery') ? window.addEventListener('sidebar:show', this.showSidebar.bind(this)): null;
       window.addEventListener('sidebar:hide', this.hideSidebar.bind(this));
     },
     mousedownHandler: function(event) {
@@ -63,7 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
     },
     showSidebar: function() {
       this.isSidebarVisible = true;
-      if(!$(".post-body").hasClass('post-gallery')){
+      // if(!$(".post-body").hasClass('post-gallery')){
         this.sidebarEl.classList.add('sidebar-active');
           if (typeof Velocity === 'function') {
             Velocity(document.querySelectorAll('.sidebar .motion-element'), isRight ? 'transition.slideRightIn' : 'transition.slideLeftIn', {
@@ -82,11 +81,11 @@ window.addEventListener('DOMContentLoaded', () => {
           } : {
             'padding-left': SIDEBAR_WIDTH
           }));
-      }else{
+      // }else{
         // if(CONFIG.page.isHome){
         //   document.querySelector('.sidebar-toggle').style.display='none'
         // }
-      }
+      // }
     },
     hideSidebar: function() {
       this.isSidebarVisible = false;
@@ -105,13 +104,6 @@ window.addEventListener('DOMContentLoaded', () => {
   };
   sidebarToggleMotion.init();
   
-  // $(".post-body").hasClass('post-gallery') ? galleryHideSiderbar():null;
-  // function galleryHideSiderbar(){
-
-  //   document.body.style.paddingRight = 0
-  //   sidebarToggleMotion.sidebarEl.classList.remove('sidebar-active');
-  //   console.log(sidebarToggleMotion.sidebarEl.style.paddingRight);
-  // }
   function updateFooterPosition() {
     var footer = document.querySelector('.footer');
     var containerHeight = document.querySelector('.header').offsetHeight + document.querySelector('.main').offsetHeight + footer.offsetHeight;

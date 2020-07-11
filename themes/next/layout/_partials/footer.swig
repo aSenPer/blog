@@ -28,6 +28,8 @@
     {%- endif %}
     <span title="{{ __('symbols_count_time.time_total') }}">{{ symbolsTimeTotal(site, config.symbols_count_time.awl, config.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}</span>
   {%- endif %}
+  <span class="post-meta-divider">|</span>
+  <a href="http://valine.asenper.cn/">评论管理</a>
 </div>
 
 {%- if theme.footer.powered %}

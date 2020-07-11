@@ -46,11 +46,6 @@ NexT.boot.registerEvents = function () {
           currentTarget.classList.remove(activePanelClassName);
           target.style.opacity = 0;
           target.classList.add(activePanelClassName);
-          // if($('.site-overview-wrap').hasClass('sidebar-panel-active')){
-          //   $(".widget-wrap").show()
-          // }else{
-          //   $(".widget-wrap").hide()
-          // }
           $('.site-overview-wrap').hasClass('sidebar-panel-active') ? $(".widget-wrap").show() : $(".widget-wrap").hide()
           window.anime({
             targets: target,

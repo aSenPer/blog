@@ -918,7 +918,7 @@ vendors:
   # jquery: //cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
   # fancybox: //cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js
   # fancybox_css: //cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css
-  jquery: https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js
+  jquery: https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
   fancybox:
   fancybox_css:
 
