@@ -1,3 +1,16 @@
+body{
+  font-size: 0.93em
+}
+p{
+  margin-bottom 5px;
+}
+.highlight{
+  margin-bottom: 40px;  
+}
+.highlight-container{
+  margin-top 20px;  
+  box-shadow: none;
+}
 .header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   position: sticky;
@@ -380,10 +393,10 @@ body::-webkit-scrollbar {
     color: #fff;
 
     &:before {
-      content: '←';
+      content: "👈";
       position: absolute;
-      font-size: 32px;
-      top: 5px;
+      font-size: 28px;
+      top: 0;
     }
   }
 
@@ -393,10 +406,10 @@ body::-webkit-scrollbar {
     float: right;
 
     &:before {
-      content: '→';
+      content: '👉';
       position: absolute;
-      font-size: 32px;
-      top: 5px;
+      font-size: 28px;
+      top: 0;
     }
   }
 }
@@ -518,7 +531,7 @@ body::-webkit-scrollbar {
 
   .photos {
     width: 30%;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 
     +mobile() {
       width: 100%;
@@ -527,9 +540,9 @@ body::-webkit-scrollbar {
     .photos-meta {
       position: relative;
       padding: 15px;
-      background: #f4f4f4;
+      background: #ecf0f5;
       line-height: 1.5;
-
+      border-radius: 10px;
       img {
         margin-bottom: 6px;
       }
@@ -628,6 +641,13 @@ body::-webkit-scrollbar {
   opacity 0
   visibility hidden
   }
+.menu-item a::after{
+  background: #fff
+}
+code{
+    background-color: #fff5f5;
+    color: #ff502c;
+}
 .header{
   background: #3E5062;  
   .search-popup .search-header{
@@ -636,7 +656,7 @@ body::-webkit-scrollbar {
   .search-popup #no-result{
     color: #3E5062 
   }
-  a,.site-nav-toggle .toggle, .site-nav-right .toggle{
+  a,.site-nav-toggle .toggle, .site-nav-right .toggle,.search-popup input.search-input{
     color: #fff;
   }
   .site-nav-toggle .toggle .toggle-line, .site-nav-right .toggle .toggle-line{
@@ -654,7 +674,10 @@ body::-webkit-scrollbar {
 }
 .sidebar{
   background: #3E5062
-  .site-description,.site-author-name,a,.site-state-item-name,.sidebar-inner{
+  .site-description,.site-author-name,a,.site-state-item-name,.sidebar-inner,.sidebar-nav li{
     color: #ffffff
+  }
+  a{
+    border-color: #fff;  
   }
 }

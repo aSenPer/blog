@@ -2,7 +2,7 @@
 title: js深拷贝vs浅拷贝
 date: 2020-01-14 18:00:17
 tags: JS
-categories: 一天一个知识点
+categories: 每天一个知识点
 ---
 <br>
 

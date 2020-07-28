@@ -19,12 +19,6 @@ date: 2020-04-05 20:42:30
 
 #### [基于nodejs的简单爬虫](http://spider.asenper.cn/)
 
-#### 小程序
-
-&emsp; &emsp; &emsp; &emsp; 会务助手&emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; H5版&emsp; &emsp; &emsp;&emsp; &emsp;&emsp;&emsp;&emsp; 糖果会议问卷
-
-<img src="http://cloud.asenper.cn//20200705093252.jpg" style="zoom:80%;display:inline-block" /><img src="http://cloud.asenper.cn//20200705093446.png" style="zoom:80%;display:inline-block" /><img src="http://cloud.asenper.cn//20200705093154.jpg" style="zoom: 80%;display:inline-block" />
-
 ## 关于本站
 
 本站所有博客纯属个人笔记，错误、描述不到位、理解片面等等情况在所难免，如有不正确的地方欢迎评论中指正，我会及时更正。关于本站，问题还很多，仍在不断完善中。。。
