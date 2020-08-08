@@ -20,9 +20,9 @@ title: 网站资源
 * [mdnice(微信排版)](https://mdnice.com/)
   
 ## 博客
-* [汤姆大叔](https://www.cnblogs.com/TomXu/tag/JavaScript/ "汤姆大叔")
-* [小火柴的蓝色理想](https://www.cnblogs.com/xiaohuochai/ "小火柴的蓝色理想")
-* [lucifer ](https://lucifer.ren/#/ "lucifer ")
+* [汤姆大叔](https://www.cnblogs.com/TomXu/tag/JavaScript/)
+* [小火柴的蓝色理想](https://www.cnblogs.com/xiaohuochai/)
+* [lucifer ](https://lucifer.ren/#/ )
 * [冴羽](https://github.com/mqyqingfeng/Blog)
 * [coco1s](https://www.cnblogs.com/coco1s/)
 * [学习源码整体架构系列-若川](https://www.lxchuan12.cn/)

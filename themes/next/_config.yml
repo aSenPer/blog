@@ -120,7 +120,7 @@ menu:
   # tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
-  收藏: /collection/ || fa fa-atlas
+  资源导航: /collection/index.html || fa fa-atlas
   相册: /gallery/ || fa fa-camera-retro
   about: /about/ || fa fa-user fa-fw
   # sitemap: /sitemap.xml || fa fa-sitemap
