@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>前端资源汇总</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcdn.net/ajax/libs/milligram/1.4.1/milligram.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <style>
+    .colorful-tab-wrapper {
+      width: 45%;
+      margin: 5vh auto;
+      background: #aaa;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+      transition: background .3s ease 0s
+    }
+
+    .colorful-tab-wrapper:before {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      left: 0;
+      top: 0;
+      content: "";
+      box-sizing: border-box;
+      overflow: hidden;
+      transform: scale(2) rotate(10deg);
+      font-size: 50px;
+      transition: all .6s ease 0s;
+      padding-top: 60px;
+      align-items: center;
+      justify-content: center;
+      color: #fff
+    }
+
+    .colorful-tab-wrapper.active:before {
+      content: attr(active-tab);
+      transform: scale(1) rotate(0deg);
+      font-family: "Montserrat";
+      z-index: 9;
+      opacity: 1;
+      visibility: visible
+    }
+
+    .colorful-tab-wrapper.active .colorful-tab-content {
+      color: white
+    }
+
+    .colorful-tab-background-image {
+      background-attachment: fixed !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important
+    }
+
+    .colorful-tab-background-image:after {
+      transition: .5s ease 0s;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      opacity: 0;
+      top: 0;
+      background: #000
+    }
+
+    .colorful-tab-background-image.active {
+      background-image: none
+    }
+
+    .colorful-tab-background-image.active:after {
+      width: 100%;
+      opacity: .5
+    }
+
+    .colorful-tab-menu {
+      display: flex;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 99
+    }
+
+    .colorful-tab-menu-item {
+      flex: 1 1 auto;
+      align-self: stretch
+    }
+
+    .colorful-tab-menu-item a {
+      display: block;
+      text-decoration: none;
+      font-family: "Montserrat";
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 18px;
+      transition: background .3s ease 0s, color .3s ease 0s
+    }
+
+    .colorful-tab-menu-item.active a {
+      background: rgba(255, 255, 255, 0.1)
+    }
+
+    .colorful-tab-container {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column
+    }
+
+    .colorful-tab-content {
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      color: #fff;
+      visibility: hidden;
+      position: relative;
+      z-index: 9;
+      font-family: "Questrial";
+      font-size: 15px;
+      line-height: 28px;
+      width: 0;
+      letter-spacing: .4px;
+      transform: scale(0.9);
+      transition: all .3s ease-in;
+      filter: blur(2px)
+    }
+
+    .colorful-tab-content.active {
+      height: auto;
+      overflow: auto;
+      transition-delay: .7s;
+      width: auto;
+      opacity: 1;
+      filter: blur(0);
+      visibility: visible;
+      transform: scale(1)
+    }
+
+    .colorful-tab-wrapper.elliptic {
+      border-radius: 10px;
+      padding: 0
+    }
+
+    .colorful-tab-wrapper.elliptic:before {
+      padding-top: 55px
+    }
+
+    .colorful-tab-wrapper.elliptic .colorful-tab-menu {
+      margin: 0
+    }
+
+    .colorful-tab-wrapper.elliptic .colorful-tab-container {
+      padding: 20px;
+      box-sizing: border-box
+    }
+
+    .colorful-tab-wrapper.flatline {
+      padding: 10px 20px 20px 20px
+    }
+
+    .colorful-tab-wrapper.flatline:before {
+      padding-top: 55px
+    }
+
+    .colorful-tab-wrapper.flatline .colorful-tab-menu {
+      background: none;
+      margin-bottom: 15px;
+      box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.2) inset
+    }
+
+    .colorful-tab-wrapper.flatline .colorful-tab-menu-item a {
+      transition: box-shadow .3s ease 0s, opacity .3s ease 0s;
+      opacity: .5
+    }
+
+    .colorful-tab-wrapper.flatline .colorful-tab-menu-item.active a {
+      background: none;
+      opacity: 1;
+      box-shadow: 0 -2px 0 #fff inset
+    }
+
+    @media (max-width: 767px) {
+      .colorful-tab-menu {
+        flex-direction: column
+      }
+    }
+    h2 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .colorful-tab-wrapper {
+      width: 90vw;
+      height: 90vh;
+      border-radius: 20px;
+      overflow: hidden;
+      /* margin-top: 5vh; */
+    }
+
+    .colorful-tab-content.active {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .colorful-tab-wrapper:before {
+      /* position: relative; */
+    }
+
+    .colorful-tab-container {
+      height: calc(90vh - 103px);
+      cursor: pointer;
+    }
+
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      height: 100%;
+      margin: 0;
+    }
+
+    .items:after {
+      content: "";
+      display: block;
+      width: 30%;
+    }
+
+    .items li {
+      display: inline-block;
+      padding-left: 50px;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .items li a {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    *::-webkit-scrollbar {
+      /*滚动条整体样式*/
+      width: 2px;
+      /*高宽分别对应横竖滚动条的尺寸*/
+      height: 1px;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      /*滚动条里面小方块*/
+      border-radius: 2px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      background: #535353;
+    }
+
+    *::-webkit-scrollbar-track {
+      /*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      border-radius: 2px;
+      background: #EDEDED;
+    }
+
+    .row {
+      height: 100%;
+    }
+
+    .left {
+      overflow-y: auto;
+      /* border-right: 1px solid #ddd; */
+    }
+
+    .left li {
+      padding: 10px;
+    }
+
+    .left .active {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .left a {
+      color: #fff;
+    }
+
+    .right {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .right .content {
+      height: 100%;
+      transition: all 0.5s ease-in;
+    }
+
+    .right .content li {
+      width: 30%;
+    }
+
+    .dialog-content-title {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="colorful-tab-wrapper" id="colorful-background-image">
+      <p style="text-align: center;margin-bottom: 0;color: rgb(168, 50, 50);position: fixed;left: 0;
+      right: 0;top: 0;">
+        行动是打败焦虑的最好办法，当你不知道该做什么的时候，就把手头的每件小事做好；当你不知道怎么开始时，就把离你最近的事情做好。
+      </p>
+      <ul class="colorful-tab-menu">
+        <li v-for="(item,index) in items" class="colorful-tab-menu-item" :class="index==0?'active':''"
+          :tab-color='item.color'><a :href="'#'+item.type">{{item.type}}</a></li>
+      </ul>
+      <div class="colorful-tab-container">
+        <div class="colorful-tab-content" v-for="(item,index) in items" :class="index==0?'active':''" :id="item.type">
+          <div class="row">
+            <ul class="left column column-20">
+              <li v-for="(i,v) in item.list" :class="active==v?'active':''">{{i.listType}}</li>
+            </ul>
+            <div class="right column column-80">
+              <div class="content ">
+                <ul class="items" v-for="i in item.list" id="css">
+                  <li v-for="v in i.listDes">
+                    <a target="_blank" :href="v.url" :title="v.name">
+                      <div>{{v.name}}</div>
+                      <div> <small>{{v.des}}</small> </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+  <script>
+    ! function (a) {
+      a.fn.colorfulTab = function (e) {
+        var r = a(this),
+          t = a.extend({
+            theme: "",
+            backgroundImage: !1,
+            overlayColor: "#000",
+            overlayOpacity: ".6"
+          }, e);
+        return this.each(function () {
+          function e(a, e) {
+            var r = a.replace("#", "");
+            r = r.match(new RegExp("(.{" + r.length / 3 + "})", "g"));
+            for (var t = 0; t < r.length; t++) r[t] = parseInt(1 == r[t].length ? r[t] + r[t] : r[t], 16);
+            return "undefined" != typeof e && r.push(e), "" + r.join(",")
+          }
+          r.addClass(t.theme);
+          var o = r.find(".colorful-tab-menu-item.active"),
+            l = r.find(".colorful-tab-menu-item"),
+            n = r.find(".colorful-tab-content"),
+            c = r.find(".colorful-tab-menu-item a");
+          if (1 == !t.backgroundImage) {
+            var i = o.attr("tab-color");
+            r.css("background", i)
+          } else {
+            r.addClass("colorful-tab-background-image");
+            var s = o.attr("tab-background");
+            r.css("background", "linear-gradient( rgba(" + e(t.overlayColor, t.overlayOpacity) + "), rgba(" + e(t
+              .overlayColor, t.overlayOpacity) + ") ),url(" + s + ")")
+          }
+          a(c).click(function (o) {
+            var c = a(this).attr("href"),
+              i = a(this).text(),
+              s = a(this).parent();
+            if (!s.hasClass("active")) {
+              if (l.removeClass("active"), s.addClass("active"), n.removeClass("active"), a(c).addClass(
+                  "active"), r.attr("active-tab", i), r.addClass("active"), 1 == !t.backgroundImage) {
+                var u = s.attr("tab-color");
+                r.css("background", u)
+              } else {
+                var v = s.attr("tab-background");
+                r.css("background", "linear-gradient( rgba(" + e(t.overlayColor, t.overlayOpacity) +
+                  "), rgba(" + e(t.overlayColor, t.overlayOpacity) + ") ),url(" + v + ")")
+              }
+              setTimeout(function () {
+                r.removeClass("active")
+              }, 800)
+            }
+            o.preventDefault()
+          })
+        })
+      }
+    }(jQuery);
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        active: '0',
+        items: [{
+            type: "网站",
+            color: '#3b6978',
+            list: [{
+              listType: '网站',
+              listDes: [{
+                  name: '奇舞周刊',
+                  url: 'https://weekly.75team.com/',
+                  des: '360奇舞周刊', //描述
+                },
+                {
+                  name: 'hellogithub',
+                  url: 'https://hellogithub.com/',
+                  des: 'github精品项目集锦', //描述
+                },
+                {
+                  name: '一位大佬的收藏夹',
+                  url: 'https://panjiachen.gitee.io/awesome-bookmarks/',
+                  des: '超多收藏', //描述
+                },
+                {
+                  name: '资源汇总',
+                  url: 'https://github.com/webproblem/learning-article',
+                  des: '前端资源汇总', //描述
+                },
+                {
+                  name: '技术胖',
+                  url: 'https://jspang.com/',
+                  des: '专注前端开发,立志每年100集免费视频的男人', //描述
+                },
+                {
+                  name: '廖雪峰',
+                  url: 'https://www.liaoxuefeng.com/',
+                  des: '大神不用多说', //描述
+                },
+                {
+                  name: '30-seconds-of-code中文版',
+                  url: 'https://www.html.cn/30-seconds-of-code/',
+                  des: '30-seconds-of-code', //描述
+                },
+              ]
+            }]
+          },
+          {
+            type: "博客",
+            color: '#00A566',
+            list: [{
+              listType: '博客',
+              listDes: [{
+                  name: '汤姆大叔',
+                  url: 'https://www.cnblogs.com/TomXu/tag/JavaScript/',
+                  des: '深入理解JavaScript系列', //描述
+                }, {
+                  name: 'lucifer',
+                  url: 'https://lucifer.ren/',
+                  des: 'leetCode题解', //描述
+                },
+                {
+                  name: 'coco1s',
+                  url: 'https://www.cnblogs.com/coco1s/',
+                  des: '专注CSS', //描述
+                },
+                {
+                  name: '若川',
+                  url: 'https://www.lxchuan12.cn/',
+                  des: '学习源码系列', //描述
+                },
+              ]
+            }]
+          },
+          {
+            type: "文档",
+            color: '#4f8a8b',
+            list: [{
+                listType: 'CSS',
+                listDes: [{
+                  name: '图片hover效果',
+                  url: 'http://imagehover.io/',
+                  des: '图片hover效果', //描述
+                }, {
+                  name: 'loader效果',
+                  url: 'https://projects.lukehaas.me/css-loaders/',
+                  des: 'loader效果', //描述
+                }]
+              },
+              {
+                listType: 'JS',
+                listDes: [{
+                    name: 'MDN',
+                    url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript',
+                    des: 'MDN'
+                  },
+                  {
+                    name: 'JavaScript设计模式与开发实践',
+                    url: 'https://www.kancloud.cn/wengwang/read_1/436074',
+                    des: 'MDN'
+                  },
+                  {
+                    name: '阮一峰ES6教程',
+                    url: 'https://es6.ruanyifeng.com/',
+                    des: 'ES6'
+                  },
+                ]
+              },
+              {
+                listType: 'TS',
+                listDes: [{
+                  name: 'ts入门教程',
+                  url: 'https://ts.xcatliu.com/',
+                  des: 'ts入门教程'
+                }]
+              },
+              {
+                listType: 'React',
+                listDes: [{
+                  name: 'redux中文文档',
+                  url: 'https://www.redux.org.cn/',
+                  des: 'redux中文文档'
+                }, {
+                  name: 'TypeScript 中文手册 React',
+                  url: 'https://typescript.bootcss.com/tutorials/react.html',
+                  des: 'TypeScript 中文手册 React'
+                }, {
+                  name: 'React开发指南',
+                  url: 'https://github.com/adam-golab/react-developer-roadmap/blob/master/README-CN.md',
+                  des: 'React开发指南'
+                }]
+              },
+              {
+                listType: 'Vue',
+                listDes: [{
+                    name: 'vue社区',
+                    url: 'https://www.vue-js.com/',
+                    des: 'vue社区'
+                  },
+                  {
+                    name: 'Vue.js 技术揭秘',
+                    url: 'https://ustbhuangyi.github.io/vue-analysis/',
+                    des: 'Vue.js 技术揭秘'
+                  },
+                  {
+                    name: 'Vue.js 源码解析',
+                    url: 'https://github.com/answershuto/learnVue',
+                    des: 'Vue.js 源码解析'
+                  },
+                  {
+                    name: 'Vue资源精选',
+                    url: 'http://vue.awesometiny.com/',
+                    des: 'Vue资源精选'
+                  },
+                  {
+                    name: 'Vue相关精品开源项目库汇总',
+                    url: 'https://segmentfault.com/a/1190000017953835',
+                    des: 'Vue相关精品开源项目库汇总'
+                  },
+                  {
+                    name: 'vue-awesome',
+                    url: 'https://xugaoyi.com/pages/12df8ace52d493f6/ ',
+                    des: 'vue资源汇总'
+                  },
+
+                ]
+              },
+              {
+                listType: 'Uni-app',
+                listDes: [{
+                    name: 'thorui 一款强大的UI库 ',
+                    url: 'https://www.thorui.cn/',
+                    des: '强烈推荐'
+                  },
+                  {
+                    name: 'colorUI ',
+                    url: 'https://github.com/weilanwl/ColorUI/',
+                    des: 'UI非常漂亮'
+                  },
+                  {
+                    name: 'uViewUI',
+                    url: 'https://uviewui.com/',
+                    des: 'uViewUI'
+                  },
+                ]
+              },
+              {
+                listType: 'Webpack',
+                listDes: [{
+                  name: '深入浅出Webpack',
+                  url: 'https://webpack.wuhaolin.cn/',
+                  des: '深入浅出Webpack', //描述
+                }, {
+                  name: 'Webpack4 那点儿东西',
+                  url: 'https://juejin.im/post/5abef5e96fb9a028e33b9035 ',
+                  des: 'Webpack4 那点儿东西', //描述
+                }, {
+                  name: 'webpack4配置详解之慢嚼细咽',
+                  url: 'https://juejin.im/post/5be64a7bf265da615304493e ',
+                  des: 'webpack4配置详解之慢嚼细咽', //描述
+                }, {
+                  name: '史上最走心webpack4.0中级教程',
+                  url: 'https://bbs.huaweicloud.com/topic/detail?id=100012',
+                  des: '史上最走心webpack4.0中级教程', //描述
+                }]
+              },
+              {
+                listType: 'Git',
+                listDes: [{
+                  name: 'learn gitb ranching',
+                  url: 'https://learngitbranching.js.org/?locale=zh_CN',
+                  des: 'learn gitb ranching', //描述
+                }, {
+                  name: '廖雪峰 git 教程',
+                  url: 'https://www.liaoxuefeng.com/wiki/896043488029600',
+                  des: '廖雪峰 git 教程'
+                }, {
+                  name: 'Git的奇技淫巧',
+                  url: 'https://github.com/521xueweihan/git-tips',
+                  des: 'Git的奇技淫巧'
+                }, ]
+              },
+              {
+                listType: 'Nodejs',
+                listDes: [{
+                  name: 'Node.js最佳实践',
+                  url: 'https://github.com/goldbergyoni/nodebestpractices/blob/master/README.chinese.md',
+                  des: 'Node.js最佳实践', //描述
+                }, {
+                  name: '狼叔：如何正确的学习Node.js',
+                  url: 'https://i5ting.github.io/How-to-learn-node-correctly/#1',
+                  des: '狼叔：如何正确的学习Node.js'
+                }, {
+                  name: 'nodejs搭建博客',
+                  url: 'https://github.com/woai3c/node-blog',
+                  des: 'node入门项目'
+                }, ]
+              },
+              {
+                listType: 'Python',
+                listDes: [{
+                  name: 'Python-100-Days',
+                  url: 'https://github.com/jackfrued/Python-100-Days',
+                  des: 'python入门', //描述
+                }]
+              },
+            ]
+          },
+          {
+            type: "面试",
+            color: '#184d47',
+            list: [{
+              listType: 'JS相关',
+              listDes: [{
+                  name: 'ScriptOJ刷题',
+                  url: 'http://scriptoj.mangojuice.top/',
+                  des: 'ScriptOJ刷题', //描述
+                }, {
+                  name: 'JavaScript 算法与数据结构',
+                  url: 'https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md',
+                  des: 'JavaScript 算法与数据结构', //描述
+                },
+                {
+                  name: '每个 JavaScript 工程师都应懂的33个概念',
+                  url: 'https://github.com/stephentian/33-js-concepts',
+                  des: '每个 JavaScript 工程师都应懂的33个概念'
+                },
+                {
+                  name: 'JavaScript 进阶问题列表',
+                  url: 'https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md ',
+                  des: 'JavaScript 进阶问题列表'
+                },
+                {
+                  name: 'leetcode',
+                  url: 'https://github.com/azl397985856/leetcode',
+                  des: 'leetcode'
+                },
+                {
+                  name: '30secondsofcode',
+                  url: 'https://www.30secondsofcode.org/js/p/1/',
+                  des: '30secondsofcode'
+                },
+                {
+                  name: '前端面试每日 3+1',
+                  url: 'https://github.com/haizlin/fe-interview',
+                  des: '前端面试每日 3+1'
+                },
+                {
+                  name: '前端内参',
+                  url: 'https://coffe1891.gitbook.io/frontend-hard-mode-interview/',
+                  des: '前端内参'
+                },
+                {
+                  name: '前端进阶之路',
+                  url: 'https://blog.poetries.top/FE-Interview-Questions/',
+                  des: '前端进阶之路'
+                },
+
+              ]
+            }, {
+              listType: '综合',
+              listDes: [{
+                  name: '前端面试与进阶指南',
+                  url: 'https://www.cxymsg.com/',
+                  des: '前端面试与进阶指南', //描述
+                },
+                {
+                  name: '前端进阶之道',
+                  url: 'https://yuchengkai.cn/',
+                  des: '前端进阶之道'
+                },
+                {
+                  name: '大前端的瑞士军刀',
+                  url: 'https://github.com/nieweidong/fetool',
+                  des: '大前端的瑞士军刀'
+                },
+                {
+                  name: '前端面试题集锦',
+                  url: 'https://fe.padding.me/#/',
+                  des: '前端面试题集锦'
+                },
+                {
+                  name: '前端开发面试题',
+                  url: 'https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers',
+                  des: '前端开发面试题'
+                },
+                {
+                  name: '木木易样前端进阶',
+                  url: 'https://muyiy.cn/',
+                  des: '木木易样前端进阶'
+                },
+                {
+                  name: '千古壹号',
+                  url: 'https://github.com/qianguyihao/Web',
+                  des: '千古壹号'
+                },
+                {
+                  name: '大前端面试宝典 - 图解前端',
+                  url: 'https://lucifer.ren/fe-interview/#/ ',
+                  des: '大前端面试宝典 - 图解前端'
+                },
+
+              ]
+            }]
+          },
+          {
+            type: "工具",
+            color: '#445370',
+            list: [{
+                listType: 'tools',
+                listDes: [{
+                    name: '在线图片转文字',
+                    url: 'https://www.gaitubao.com/tupian-wenzi/',
+                    des: '在线图片转文字', //描述
+                  },
+                  {
+                    name: '代码片段转图片',
+                    url: 'https://carbon.now.sh/',
+                    des: '代码片段转图片'
+                  },
+                  {
+                    name: '蚂蚁部落',
+                    url: 'https://www.softwhy.com/tool/',
+                    des: '蚂蚁部落'
+                  },
+                  {
+                    name: '果核剥壳',
+                    url: 'https://www.ghpym.com/',
+                    des: '一个资源网站'
+                  },
+                  {
+                    name: '在线抠图',
+                    url: 'https://www.remove.bg/zh',
+                    des: '在线抠图'
+                  },
+                  {
+                    name: '奶牛快传',
+                    url: 'https://cowtransfer.com/',
+                    des: '奶牛快传 文件传输及存储'
+                  },
+                ]
+              },
+              {
+                listType: '下载',
+                listDes: [{
+                    name: 'pdown',
+                    url: 'https://github.com/forpdown/pdown',
+                    des: '死啦', //描述
+                  },
+                  {
+                    name: 'baidupcs-web',
+                    url: 'https://github.com/liuzhuoling2011/baidupcs-web/releases',
+                    des: '死啦'
+                  },
+                ]
+              },
+              {
+                listType: '设计（配色）',
+                listDes: [{
+                    name: '配色',
+                    url: 'https://colorhunt.co/',
+                    des: '配色', //描述
+                  },
+                  {
+                    name: '中国色',
+                    url: 'http://zhongguose.com/',
+                    des: '中国色'
+                  },
+                  {
+                    name: '渐变色',
+                    url: 'https://uigradients.com/#Aubergine',
+                    des: '渐变色'
+                  },
+                  {
+                    name: '渐变色',
+                    url: 'https://webkul.github.io/coolhue/',
+                    des: '渐变色'
+                  },
+                ]
+              },
+              {
+                listType: '高清图片资源',
+                listDes: [{
+                    name: 'alphacoders',
+                    url: 'https://wall.alphacoders.com/',
+                    des: 'alphacoders', //描述
+                  },
+                  {
+                    name: 'wallhaven',
+                    url: 'https://wallhaven.cc/',
+                    des: 'wallhaven'
+                  },
+                  {
+                    name: 'unsplash',
+                    url: 'https://unsplash.com/',
+                    des: 'unsplash'
+                  },
+                  {
+                    name: 'pexels',
+                    url: 'https://www.pexels.com/zh-cn/',
+                    des: 'pexels'
+                  },
+                ]
+              },
+              {
+                listType: '图片压缩',
+                listDes: [{
+                    name: 'tinyjpg',
+                    url: 'https://weekly.75team.com/',
+                    des: 'tinyjpg', //描述
+                  },
+                  {
+                    name: '图片压缩',
+                    url: 'http://totem.songdonghong.com/',
+                    des: '图片压缩'
+                  },
+                  {
+                    name: '纯浏览器压缩',
+                    url: 'https://works.yangerxiao.com/icfe/',
+                    des: '质量稍差，能够应付日常使用'
+                  },
+                  {
+                    name: 'node gulp-image插件',
+                    url: 'JavaScript:;',
+                    des: '感觉质量还可以，使用也简单。另外tinyjpg也提供了相关插件，压缩质量要好很多，但有数量限制。'
+                  },
+                ]
+              },
+              {
+                listType: '免费图床',
+                listDes: [{
+                    name: 'sm.ms',
+                    url: 'https://sm.ms/',
+                    des: 'sm.ms', //描述
+                  },
+                  {
+                    name: '牛图网',
+                    url: 'https://niupic.com/',
+                    des: '牛图网', //描述
+                  },
+                  {
+                    name: '路过图床',
+                    url: 'https://imgchr.com/',
+                    des: '路过图床', //描述
+                  },
+                  {
+                    name: '聚合图床',
+                    url: 'https://www.superbed.cn/',
+                    des: '聚合图床', //描述
+                  },
+                  {
+                    name: '土豆图床',
+                    url: 'https://images.ac.cn/?btwaf=47311215',
+                    des: '土豆图床', //描述
+                  },
+                  {
+                    name: '自己搭建的一个',
+                    url: 'http://picup.asenper.cn/',
+                    des: '感谢大佬 https://github.com/wisp-x/lsky-pro', //描述
+                  },
+                  {
+                    name: '七牛云',
+                    url: 'https://www.qiniu.com/',
+                    des: '新用户免费10G存储，配合PicGo,typora写文档简直完美，但要有自己的服务器', //描述
+                  },
+                ]
+              }
+            ]
+          },
+        ]
+      },
+      mounted() {
+        var that = this;
+        this.$nextTick(() => {
+          $(".colorful-tab-menu-item").click(function () {
+            that.active = '0'
+            $('.content').css({
+              transform: "translateY(0px)"
+            })
+          })
+          $("#colorful-background-image").colorfulTab({
+            theme: "elliptic",
+          });
+          $(".left li").click(function () {
+            var index = $(this).index(),
+              h = $(this).parent().next().height()
+            that.active = index;
+            $(this).parent().siblings(".right").find('.content').css({
+              transform: "translateY(-" + index * h + "px)"
+            })
+          })
+        })
+      },
+    })
+  </script>
+</body>
+
+</html>
