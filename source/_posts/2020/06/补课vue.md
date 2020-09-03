@@ -87,19 +87,27 @@ export default {
     searchValue: {
     // 通过handler来监听属性变化, 初次调用 newValue为""空字符串， oldValue为 undefined
       handler(newValue, oldValue) {
-        if (newValue !== oldValue) {
-          this.$_loadData()
-        }
+       
       },
       //立即执行属性
       immediate: true,
       //深度监听属性
       deep:true,
-      
     }
   }
 }
 
+deep属性会产生较大的开销，如果只是监听对象的某一个对象，可以使用字符串的形式进行监听，如下
+
+export default {
+  watch: {
+    'obj.a': {
+      handler(newValue, oldValue) {
+       
+      },
+    }
+  }
+}
 ```
 
 除此之外，还可以用 `vm.$watch` 来监听数据，

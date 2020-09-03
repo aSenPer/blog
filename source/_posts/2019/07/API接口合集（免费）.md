@@ -1,5 +1,5 @@
 ---
-title: API接口合集（免费）
+title: API接口合集
 date: 2019-07-11 19:07:41
 tags: 其它
 categories: 其它
@@ -22,6 +22,14 @@ categories: 其它
 
 ## 格言警句
 
-
 >http://api.youngam.cn/api/one.php
 
+## 每日Bing图
+
+> https://api.xygeng.cn/Bing/  直接使用 
+> `<img src="https://api.xygeng.cn/Bing" />`
+
+## 一言
+
+>https://v1.hitokoto.cn/
+>参数说明：https://developer.hitokoto.cn/sentence

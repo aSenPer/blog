@@ -9,7 +9,7 @@
   {{ partial('_scripts/noscript.swig', {}, {cache: theme.cache.enable}) }}
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope itemtype="http://schema.org/WebPage" style="background:#ecf0f5 url(https://api.uomg.com/api/rand.img1?sort=背景)">
   <div class="container{%- if theme.motion.enable %} use-motion{%- endif %}">
     <div class="headband"></div>
 
@@ -19,7 +19,7 @@
 
     {{ partial('_partials/widgets.swig', {}, {cache: theme.cache.enable}) }}
 
-    <main class="main">
+    <main class="main" style="background:none">
       <div class="main-inner">
         <div class="content-wrap">
           {% include '_partials/header/sub-menu.swig' %}
@@ -56,5 +56,6 @@
   {%- if theme.pjax %}
     </div>
   {%- endif %}
+  
 </body>
 </html>

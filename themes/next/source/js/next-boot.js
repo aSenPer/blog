@@ -113,7 +113,9 @@ NexT.boot.motion = function () {
   }
   NexT.utils.updateSidebarPosition();
 };
-
+$.get('https://v1.hitokoto.cn/?c=k',function(r){
+  $("#yiyan").text(r.hitokoto+'  ——  '+r.from)
+})
 window.addEventListener('DOMContentLoaded', () => {
   NexT.boot.registerEvents();
   NexT.boot.refresh();
